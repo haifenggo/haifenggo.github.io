@@ -181,14 +181,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">int Partition(int arr[], int l, int r)</span><br><span class="line">&#123;</span><br><span class="line">	int i = l;</span><br><span class="line">	int j = r;</span><br><span class="line">	int x = arr[l];//将最左元素记录到x中</span><br><span class="line">	while (i &lt; j)</span><br><span class="line">	&#123;</span><br><span class="line">		while (i&lt;j &amp;&amp; arr[j]&gt;x)</span><br><span class="line">			j--;</span><br><span class="line">		if (i &lt; j)</span><br><span class="line">			arr[i++] = arr[j];//直接替换掉最左元素（已在x中存有备份）</span><br><span class="line">			</span><br><span class="line">		while (i &lt; j &amp;&amp; arr[i] &lt; x)</span><br><span class="line">			i++;</span><br><span class="line">		if (i &lt; j)</span><br><span class="line">			arr[j--] = arr[i];</span><br><span class="line">	&#125;</span><br><span class="line">	arr[i] = x;</span><br><span class="line">	return i;</span><br><span class="line">&#125;</span><br><span class="line">void QuickSort(int arr[], int l, int r)</span><br><span class="line">&#123;</span><br><span class="line">	if (l &gt;= r)</span><br><span class="line">		return;</span><br><span class="line">	int i = Partition(arr, l, r);</span><br><span class="line">	QuickSort(arr, l, i - 1);</span><br><span class="line">	 // 递归处理左右两部分，i处为分界点，不用管i了</span><br><span class="line">	QuickSort(arr, i+1, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%8E%92%E5%BA%8F/">排序</a>
+	</div>
+
 
       
       <div class="clearfix"></div>
@@ -365,7 +375,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void BubbleSort(int arr[], int n)</span><br><span class="line">&#123;</span><br><span class="line">	//每次把最大值放在最后边</span><br><span class="line">	for (int i = 0;i &lt; n - 1;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for (int j = 0;j &lt; n - i - 1;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if (arr[j] &gt; arr[j + 1])</span><br><span class="line">			&#123;</span><br><span class="line">				int temp = arr[j];</span><br><span class="line">				arr[j] = arr[j + 1];</span><br><span class="line">				arr[j + 1] = temp;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
