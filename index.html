@@ -88,7 +88,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a>
+						<a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 15px;">排序</a>
 					</div>
 				</section>
 				
@@ -152,6 +152,125 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-快速排序" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/10/22/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="article-date">
+  	<time datetime="2021-10-22T13:23:06.000Z" itemprop="datePublished">2021-10-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/22/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+        快速排序
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-归并排序" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/10/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" class="article-date">
+  	<time datetime="2021-10-22T13:22:51.000Z" itemprop="datePublished">2021-10-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
+        归并排序
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>归并排序</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">void Merge(int ar[], int low,int mid, int high) &#123;</span><br><span class="line">    int i = low, j = mid + 1, k = 0;</span><br><span class="line">    int* temp = new(nothrow)int[high - low + 1];</span><br><span class="line">    if (!temp)</span><br><span class="line">        return;</span><br><span class="line">    while (i &lt;= mid &amp;&amp; j &lt;= high) &#123;</span><br><span class="line">        if (ar[i] &lt;= ar[j])</span><br><span class="line">            temp[k++] = ar[i++];</span><br><span class="line">        else</span><br><span class="line">            temp[k++] = ar[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    //复制ar数组剩余的数</span><br><span class="line">    while (i &lt;= mid)</span><br><span class="line">        temp[k++] = ar[i++];</span><br><span class="line">    while (i &lt;= high)</span><br><span class="line">        temp[k++] = ar[j++];</span><br><span class="line">    for (int i = low, k = 0;i &lt; high;i++)</span><br><span class="line">        ar[i] = temp[k++];</span><br><span class="line">    delete[]temp;</span><br><span class="line">&#125;</span><br><span class="line">void MergeSort(int ar[], int low, int high) &#123;</span><br><span class="line">    if (low &lt; high)</span><br><span class="line">    &#123;//分解</span><br><span class="line">        int mid = (low + high) / 2;</span><br><span class="line">        //分半排序</span><br><span class="line">        MergeSort(ar, low, mid);</span><br><span class="line">        MergeSort(ar, mid + 1, high);</span><br><span class="line">        //合并</span><br><span class="line">        Merge(ar, low, mid, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%8E%92%E5%BA%8F/">排序</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-冒泡排序" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -193,6 +312,10 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%8E%92%E5%BA%8F/">排序</a>
+	</div>
+
 
       
       <div class="clearfix"></div>
@@ -282,10 +405,10 @@
 
 
   
-    <article id="post-算法" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-二分查找" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2021/10/14/%E7%AE%97%E6%B3%95/" class="article-date">
+      <a href="/2021/10/14/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="article-date">
   	<time datetime="2021-10-14T09:03:18.000Z" itemprop="datePublished">2021-10-14</time>
 </a>
     </div>
@@ -299,8 +422,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/14/%E7%AE%97%E6%B3%95/">
-        算法
+      <a class="article-title" href="/2021/10/14/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+        二分查找
         
       </a>
     </h1>
@@ -315,12 +438,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">bool binary_search(int x) &#123;</span><br><span class="line">	int n, max;</span><br><span class="line">	max = 100;</span><br><span class="line">	cin &gt;&gt; n ;</span><br><span class="line">	int k[max];</span><br><span class="line">	//在k[]中查找x：</span><br><span class="line">		int l = 0, r = n;</span><br><span class="line">		while (r - l &gt;= 1) &#123;</span><br><span class="line">			int i = (l + r) / 2;</span><br><span class="line">			if (k[i] == x)return true;</span><br><span class="line">			else if (k[i] &lt; i) l = i + 1;</span><br><span class="line">			else r = i;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">递归阶乘</span><br><span class="line">int fact(int n) &#123;</span><br><span class="line">	if (n == 0)return 1;</span><br><span class="line">	return n * fact(n - 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>归并算法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">void Merge(int ar[], int low,int mid, int high) &#123;</span><br><span class="line">    int i = low, j = mid + 1, k = 0;</span><br><span class="line">    int* temp = new(nothrow)int[high - low + 1];</span><br><span class="line">    if (!temp)</span><br><span class="line">        return;</span><br><span class="line">    while (i &lt;= mid &amp;&amp; j &lt;= high) &#123;</span><br><span class="line">        if (ar[i] &lt;= ar[j])</span><br><span class="line">            temp[k++] = ar[i++];</span><br><span class="line">        else</span><br><span class="line">            temp[k++] = ar[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    //复制ar数组剩余的数</span><br><span class="line">    while (i &lt;= mid)</span><br><span class="line">        temp[k++] = ar[i++];</span><br><span class="line">    while (i &lt;= high)</span><br><span class="line">        temp[k++] = ar[j++];</span><br><span class="line">    for (int i = low, k = 0;i &lt; high;i++)</span><br><span class="line">        ar[i] = temp[k++];</span><br><span class="line">    delete[]temp;</span><br><span class="line">&#125;</span><br><span class="line">void MergeSort(int ar[], int low, int high) &#123;</span><br><span class="line">    if (low &lt; high)</span><br><span class="line">    &#123;//分解</span><br><span class="line">        int mid = (low + high) / 2;</span><br><span class="line">        //分半排序</span><br><span class="line">        MergeSort(ar, low, mid);</span><br><span class="line">        MergeSort(ar, mid + 1, high);</span><br><span class="line">        //合并</span><br><span class="line">        Merge(ar, low, mid, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>插入排序</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void InsertSort(int ar[], int n) &#123;</span><br><span class="line">    for (int i=1;i &lt; n;i++) &#123;</span><br><span class="line">        if (ar[i] &lt; ar[i-1]) &#123;</span><br><span class="line">            int j = i - 1;</span><br><span class="line">            //复制出哨兵x</span><br><span class="line">            int x = ar[i];</span><br><span class="line">            //移动比哨兵大的数</span><br><span class="line">            while (j &gt; 0 &amp;&amp; x &lt; ar[j]) &#123;</span><br><span class="line">                ar[j + 1] = ar[j];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            //把哨兵放在ar[j]后面</span><br><span class="line">            ar[j+1] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 
       
