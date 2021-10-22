@@ -271,6 +271,71 @@
 
 
   
+    <article id="post-插入排序" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/10/22/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" class="article-date">
+  	<time datetime="2021-10-22T13:22:39.000Z" itemprop="datePublished">2021-10-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/22/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">
+        插入排序
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>插入排序</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void InsertSort(int ar[], int n) &#123;</span><br><span class="line">    for (int i=1;i &lt; n;i++) &#123;</span><br><span class="line">        if (ar[i] &lt; ar[i-1]) &#123;</span><br><span class="line">            int j = i - 1;</span><br><span class="line">            //复制出哨兵x</span><br><span class="line">            int x = ar[i];</span><br><span class="line">            //移动比哨兵大的数</span><br><span class="line">            while (j &gt; 0 &amp;&amp; x &lt; ar[j]) &#123;</span><br><span class="line">                ar[j + 1] = ar[j];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            //把哨兵放在ar[j]后面</span><br><span class="line">            ar[j+1] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%8E%92%E5%BA%8F/">排序</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-冒泡排序" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
