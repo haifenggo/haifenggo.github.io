@@ -88,7 +88,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a>
+						<a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a>
 					</div>
 				</section>
 				
@@ -151,6 +151,67 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/10/24/%E6%8A%80%E5%B7%A7/" class="article-date">
+  	<time datetime="2021-10-24T06:16:19.000Z" itemprop="datePublished">2021-10-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/24/%E6%8A%80%E5%B7%A7/">
+        技巧
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>日期读入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scanf(&quot;%d-%d-%d-%d:%d&quot;,&amp;year,&amp;month,&amp;day,&amp;hour,&amp;minute);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-希尔排序" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -247,6 +308,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">int Partition(int arr[], int l, int r)</span><br><span class="line">&#123;</span><br><span class="line">	int i = l;</span><br><span class="line">	int j = r;</span><br><span class="line">	int x = arr[l];//将最左元素记录到x中</span><br><span class="line">	while (i &lt; j)</span><br><span class="line">	&#123;</span><br><span class="line">		while (i&lt;j &amp;&amp; arr[j]&gt;x)</span><br><span class="line">			j--;</span><br><span class="line">		if (i &lt; j)</span><br><span class="line">			arr[i++] = arr[j];//直接替换掉最左元素（已在x中存有备份）</span><br><span class="line">			</span><br><span class="line">		while (i &lt; j &amp;&amp; arr[i] &lt; x)</span><br><span class="line">			i++;</span><br><span class="line">		if (i &lt; j)</span><br><span class="line">			arr[j--] = arr[i];</span><br><span class="line">	&#125;</span><br><span class="line">	arr[i] = x;</span><br><span class="line">	return i;</span><br><span class="line">&#125;</span><br><span class="line">void QuickSort(int arr[], int l, int r)</span><br><span class="line">&#123;</span><br><span class="line">	if (l &gt;= r)</span><br><span class="line">		return;</span><br><span class="line">	int i = Partition(arr, l, r);</span><br><span class="line">	QuickSort(arr, l, i - 1);</span><br><span class="line">	 // 递归处理左右两部分，i处为分界点，不用管i了</span><br><span class="line">	QuickSort(arr, i+1, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void quicksort(int a[], int l, int r)//从大到小排序</span><br><span class="line">&#123;</span><br><span class="line">	if (l &gt;= r)</span><br><span class="line">		return;</span><br><span class="line">	int i, j,base, temp;</span><br><span class="line">	i = l, j = r;base = a[l];</span><br><span class="line">	while (i &lt; j)</span><br><span class="line">	&#123;</span><br><span class="line">		while (a[j] &lt;= base &amp;&amp; i &lt; j)//从小到大只需将&lt;=改为&gt;=</span><br><span class="line">			j--;</span><br><span class="line">		while (a[i] &gt;= base &amp;&amp; i &lt; j)//从小到大只需将&gt;=改为&lt;=</span><br><span class="line">			i++;</span><br><span class="line">		if (i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = a[i];</span><br><span class="line">			a[i] = a[j];</span><br><span class="line">			a[j] = temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	a[l] = a[i];//交换基准数和俩子数组交接处的数</span><br><span class="line">	a[i] = base;//此时a[i]是中间值</span><br><span class="line">	quicksort(a, l, i - 1);</span><br><span class="line">	quicksort(a, i + 1, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
