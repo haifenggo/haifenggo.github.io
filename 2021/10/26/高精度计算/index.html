@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>高精度计算 | Hello Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="12345678910111213141516171819202122232425262728void Read(int a[]) &amp;#123;	string s;	cin &gt;&gt; s;	a[0] &#x3D; s.size();	for (int i &#x3D; 1;i &lt;&#x3D; a[0];i++)		a[i] &#x3D; s[a[0] - i] - &amp;#x27;0&amp;#x27;;	return;&amp;#125;v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高精度计算">
+<meta property="og:url" content="http://example.com/2021/10/26/%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97/index.html">
+<meta property="og:site_name" content="Hello Blog">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728void Read(int a[]) &amp;#123;	string s;	cin &gt;&gt; s;	a[0] &#x3D; s.size();	for (int i &#x3D; 1;i &lt;&#x3D; a[0];i++)		a[i] &#x3D; s[a[0] - i] - &amp;#x27;0&amp;#x27;;	return;&amp;#125;v">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-26T13:25:25.000Z">
+<meta property="article:modified_time" content="2021-10-26T13:35:12.723Z">
+<meta property="article:author" content="haifenggo">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Hello Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">haifenggo</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/categories">Categories</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 10px;">数学</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m haifenggo.more information in my wechat.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/categories">Categories</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-高精度计算" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/10/26/%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97/" class="article-date">
+  	<time datetime="2021-10-26T13:25:25.000Z" itemprop="datePublished">2021-10-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      高精度计算
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">void Read(int a[]) &#123;</span><br><span class="line">	string s;</span><br><span class="line">	cin &gt;&gt; s;</span><br><span class="line">	a[0] = s.size();</span><br><span class="line">	for (int i = 1;i &lt;= a[0];i++)</span><br><span class="line">		a[i] = s[a[0] - i] - &#x27;0&#x27;;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line">void Out(int a[]) &#123;</span><br><span class="line">	while (a[0] &gt; 1 &amp;&amp; a[a[0]] == 0) a[0]--;//去掉数据多余的0</span><br><span class="line">	for (int i = a[0];i &gt; 0;i--) cout &lt;&lt; a[i];</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line">int Comp(int a[],int b[]) &#123;</span><br><span class="line">	int i;</span><br><span class="line">	if (a[0] &gt; b[0])return 1;</span><br><span class="line">	if (a[0] &lt; b[0])return -1;</span><br><span class="line">	for (i = a[0];i &gt; 0;i--) &#123;</span><br><span class="line">		if (a[i] &gt; b[i])return 1;</span><br><span class="line">		if (a[i] &lt; b[i])return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">void numcopy(int b[], int t[], int i) &#123;</span><br><span class="line">	t[0] = b[0] + i - 1;//t的位数</span><br><span class="line">	for (int j = b[0];j &gt; 0;j--)</span><br><span class="line">		t[i + j - 1] = b[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p><strong>加法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//高精度+高精度</span><br><span class="line">void Add(int a[], int b[]) &#123;</span><br><span class="line">	if (a[0] &lt; b[0]) a[0] = b[0];</span><br><span class="line">	for (int i = 1;i &lt;= a[0];i++) &#123;</span><br><span class="line">		a[i] += b[i];</span><br><span class="line">		a[i + 1] += a[i] / 10;</span><br><span class="line">		a[i] %= 10;</span><br><span class="line">		//if (a[i] &gt; 9) a[i + 1]++, a[i] -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	if (a[a[0] + 1] &gt; 0) a[0]++;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line">//高精度+单精度</span><br><span class="line">void Add(int a[], int b) &#123;</span><br><span class="line">	a[1] += b;</span><br><span class="line">	int i = 1;</span><br><span class="line">	while (a[i] &gt; 9) &#123;</span><br><span class="line">		a[i + 1] += a[i] / 10;</span><br><span class="line">		a[i] %= 10;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	if (i &gt; a[0]) a[0]++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>乘法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//高精度*单精度</span><br><span class="line">void Mul(int a[], int b) &#123;</span><br><span class="line">	for (int i = 1;i &lt;= a[0];i++)</span><br><span class="line">		a[i] * b;</span><br><span class="line">	for (int i = 1;i &lt;= a[0];i++) &#123;</span><br><span class="line">		a[i + 1] += a[i] / 10;</span><br><span class="line">		a[i] %= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	while (a[a[0] + 1] &gt; 0) &#123;</span><br><span class="line">		a[0]++;</span><br><span class="line">		a[a[0] + 1] = a[a[0]] / 10;</span><br><span class="line">		a[a[0]] %= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line">//高精度*高精度</span><br><span class="line">void Mul(int a[],int b[],int c[]) &#123;</span><br><span class="line">	int i, j;</span><br><span class="line">	for (i = 1;i &lt;= a[0];i++)</span><br><span class="line">		for (j = 1;j &lt;= b[0];j++)</span><br><span class="line">			c[i + j - 1] += a[i] * b[j];</span><br><span class="line">	c[0] = a[0] + b[0];</span><br><span class="line">	for (i = 1;i &lt;= c[0];i++) &#123;</span><br><span class="line">		c[i + 1] += c[i] / 10;</span><br><span class="line">		c[i] %= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	while (c[0] &gt; 1 &amp;&amp; c[c[0]] == 0)  c[0]--;//c[0]&gt;1考虑了和0相乘的情况</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>减法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//高精度减法a&gt;b</span><br><span class="line">void Minus(int a[], int b[]) &#123;</span><br><span class="line">	for (int i = 1;i &lt;= a[0];i++) &#123;</span><br><span class="line">		if (a[i] &lt; b[i]) &#123;</span><br><span class="line">			a[i + 1]--;a[i] += 10;</span><br><span class="line">		&#125;</span><br><span class="line">		a[i] -= b[i];</span><br><span class="line">	&#125;</span><br><span class="line">	while (a[0] &gt; 0 &amp;&amp; a[a[0]] == 0)a[0]--;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>除法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">// 高精度/单精度</span><br><span class="line">void Div(int a[], int b, int c[]) &#123;</span><br><span class="line">	c[0] = a[0];</span><br><span class="line">	int y=0;//存储余数;</span><br><span class="line">	for (int i = a[0];i &gt; 0;i--) &#123;</span><br><span class="line">		y = y * 10 + a[i];</span><br><span class="line">		c[i] = y / b;</span><br><span class="line">		y %= b;</span><br><span class="line">	&#125;</span><br><span class="line">	while (c[0] &gt; 1 &amp;&amp; c[c[0]] == 0) c[0]--;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line">// 高精度/高精度</span><br><span class="line">int Comp(int a[],int b[]) &#123;</span><br><span class="line">	int i;</span><br><span class="line">	if (a[0] &gt; b[0])return 1;</span><br><span class="line">	if (a[0] &lt; b[0])return -1;</span><br><span class="line">	for (i = a[0];i &gt; 0;i--) &#123;</span><br><span class="line">		if (a[i] &gt; b[i])return 1;</span><br><span class="line">		if (a[i] &lt; b[i])return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">void numcopy(int b[], int t[], int i) &#123;</span><br><span class="line">	t[0] = b[0] + i - 1;//t的位数</span><br><span class="line">	for (int j = b[0];j &gt; 0;j--)</span><br><span class="line">		t[i + j - 1] = b[j];</span><br><span class="line">&#125;</span><br><span class="line">void Div(int a[], int b[], int c[]) &#123;</span><br><span class="line">	int i, j, t[N];</span><br><span class="line">	c[0] = a[0] - b[0] + 1;</span><br><span class="line">	for (i = c[0];i &gt; 0;i--) &#123;</span><br><span class="line">		memset(t, 0, sizeof(t));</span><br><span class="line">		numcopy(b, t, i);//在b后面添加0，为方便处理用t替代b，每次循环的时候0的个数会减少1</span><br><span class="line">		while (Comp(a, t) &gt;= 0) &#123;//a比t大的时候就统计a中包含了多少个t(个数&lt;10)</span><br><span class="line">			c[i]++;</span><br><span class="line">			Minus(a, t);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	while (c[0] &gt; 0 &amp;&amp; c[c[0]] == 0)c[0]--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/10/24/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基数排序</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2021 haifenggo
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
