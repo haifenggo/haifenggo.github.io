@@ -12,12 +12,12 @@
   <meta name="description" content="素数 N&#x3D;根号N*根号NN的因数除了根号N，其他都是成对存在的，且必定一个大于根号N一个小于根号N假设N不是质数，有个因数大于根号N（不是N本身）则N必定有一个与之对应的小于根号N的因数 1234567&#x2F;&#x2F;O(根号n)bool is_prime(int n)&amp;#123;for(int i&#x3D;2;i*i&lt;&#x3D;n;i++)&amp;#123;   if(n%i&#x3D;&#x3D;0) return false;&amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数学">
-<meta property="og:url" content="http://example.com/2021/10/17/%E6%95%B0%E5%AD%A6-%E6%B3%95/index.html">
+<meta property="og:url" content="http://example.com/2021/10/17/%E6%95%B0%E5%AD%A6/index.html">
 <meta property="og:site_name" content="Hello Blog">
 <meta property="og:description" content="素数 N&#x3D;根号N*根号NN的因数除了根号N，其他都是成对存在的，且必定一个大于根号N一个小于根号N假设N不是质数，有个因数大于根号N（不是N本身）则N必定有一个与之对应的小于根号N的因数 1234567&#x2F;&#x2F;O(根号n)bool is_prime(int n)&amp;#123;for(int i&#x3D;2;i*i&lt;&#x3D;n;i++)&amp;#123;   if(n%i&#x3D;&#x3D;0) return false;&amp;#125;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-17T03:22:13.000Z">
-<meta property="article:modified_time" content="2021-11-01T10:15:15.703Z">
+<meta property="article:modified_time" content="2021-11-06T07:59:13.834Z">
 <meta property="article:author" content="haifenggo">
 <meta name="twitter:card" content="summary">
   
@@ -92,7 +92,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 10px;">数学</a>
+						<a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 10px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 10px;">数学</a>
 					</div>
 				</section>
 				
@@ -154,10 +154,10 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-数学-法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-数学" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2021/10/17/%E6%95%B0%E5%AD%A6-%E6%B3%95/" class="article-date">
+      <a href="/2021/10/17/%E6%95%B0%E5%AD%A6/" class="article-date">
   	<time datetime="2021-10-17T03:22:13.000Z" itemprop="datePublished">2021-10-17</time>
 </a>
     </div>
@@ -200,6 +200,10 @@
 <p><strong>辗转相除法</strong></p>
 <p>最大公约数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	//循环				//m&gt;n</span><br><span class="line">int fun(int m,int n)&#123;</span><br><span class="line">	int rem;			//余数，当余数为0的时候，最后的m(除数)即为最大公约数</span><br><span class="line">	//先用较小的数对较大的数取余，再用余数对较小的数求余，直到余数为零 </span><br><span class="line">	while(n &gt; 0)&#123;</span><br><span class="line">		rem = m % n;</span><br><span class="line">		m = n;</span><br><span class="line">		n = rem;</span><br><span class="line">	&#125;</span><br><span class="line">	return m;</span><br><span class="line">	</span><br><span class="line">	//递归</span><br><span class="line">int gcd(int a,int b) &#123;</span><br><span class="line">	return b&gt;0 ? gcd(b,a%b):a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>排列</strong></p>
+<p>字符串排列next_permutation代码实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">void inline swap(char* s1, char* s2)</span><br><span class="line">&#123;</span><br><span class="line">	char t = *s1;</span><br><span class="line">	*s1 = *s2;</span><br><span class="line">	*s2 = t;</span><br><span class="line">&#125;</span><br><span class="line">void reverse(char* s, char* e)// s, e分别开始和结尾，不能反转中文</span><br><span class="line">&#123;</span><br><span class="line">	for (e--;s &lt; e;s++,e--)</span><br><span class="line">		swap(s, e);</span><br><span class="line">&#125;</span><br><span class="line">bool next_permutation(char* start, char* end)//排列下一次</span><br><span class="line">&#123;</span><br><span class="line">	char* cur = end -1, * pre = cur - 1;</span><br><span class="line">	while (cur &gt; start &amp;&amp; *pre &gt;= *cur)cur--, pre--;</span><br><span class="line">	if (cur &lt;= start)return false;</span><br><span class="line">	for (cur = end-1 ;*cur &lt;= *pre;cur--)</span><br><span class="line">		;//找到逆序中大于*pre的元素的最小元素</span><br><span class="line">	swap(cur, pre);</span><br><span class="line">	reverse(pre + 1, end);//将尾部的逆序变成正序</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br><span class="line">输入12345-----输出12354</span><br></pre></td></tr></table></figure>
 
 
 

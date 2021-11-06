@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>搜索与回溯 | Hello Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="算法框架1 12345678910111213141516int search(int k)&amp;#123;    if(到达目的) 输出解;    else    &amp;#123;        for(int i&#x3D;1;i&lt;&#x3D;算符种数;i++)        &amp;#123;            if(满足条件)            &amp;#123;                保存结果;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搜索与回溯">
+<meta property="og:url" content="http://example.com/2021/11/06/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF/index.html">
+<meta property="og:site_name" content="Hello Blog">
+<meta property="og:description" content="算法框架1 12345678910111213141516int search(int k)&amp;#123;    if(到达目的) 输出解;    else    &amp;#123;        for(int i&#x3D;1;i&lt;&#x3D;算符种数;i++)        &amp;#123;            if(满足条件)            &amp;#123;                保存结果;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-06T07:59:49.000Z">
+<meta property="article:modified_time" content="2021-11-06T08:13:08.703Z">
+<meta property="article:author" content="haifenggo">
+<meta property="article:tag" content="搜索">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Hello Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">haifenggo</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/categories">Categories</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 10px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 10px;">数学</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m haifenggo.more information in my wechat.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/categories">Categories</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-搜索与回溯" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/11/06/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF/" class="article-date">
+  	<time datetime="2021-11-06T07:59:49.000Z" itemprop="datePublished">2021-11-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      搜索与回溯
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a>
+	</div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em><strong>算法框架1</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int search(int k)</span><br><span class="line">&#123;</span><br><span class="line">    if(到达目的) 输出解;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=1;i&lt;=算符种数;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(满足条件)</span><br><span class="line">            &#123;</span><br><span class="line">                保存结果;</span><br><span class="line">                search(k+1);</span><br><span class="line">                恢复：保存结果之前的状态&#123;回溯一步&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">int n;</span><br><span class="line">int num[10001];   //存储数据</span><br><span class="line">bool mark[10001]; //判断该数是否被标记过</span><br><span class="line">bool check(int x,int y)    //判断是否满足&quot;素数环&quot;条件</span><br><span class="line">&#123;</span><br><span class="line">	int k=2,i=x+y;</span><br><span class="line">	while(k&lt;=sqrt(i)&amp;&amp;i%k!=0) k++;</span><br><span class="line">	if(k&gt;sqrt(i)) return true;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br><span class="line">void print()   //输出函数</span><br><span class="line">&#123;</span><br><span class="line">	for(int i=1;i&lt;n;i++)</span><br><span class="line">		printf(&quot;%d &quot;,num[i]);</span><br><span class="line">	printf(&quot;%d\n&quot;,num[n]);</span><br><span class="line">&#125;</span><br><span class="line">void search(int x)  //搜索函数，全排列</span><br><span class="line">&#123;</span><br><span class="line">    if(x==n+1&amp;&amp;check(num[1],num[n])) print(); //增加num[1]==1使初始值为1</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">		if(!mark[i]&amp;&amp;check(num[x-1],i))   //判断该数是否被标记以及是否与上一个数互质</span><br><span class="line">		&#123;</span><br><span class="line">			num[x]=i;</span><br><span class="line">			mark[i]=true; //标记该数</span><br><span class="line"> </span><br><span class="line">			search(x+1);  //下一轮回溯</span><br><span class="line">			mark[i]=false;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	search(1);       //第一轮回溯开始</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>算法框架2</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int search(int k)</span><br><span class="line">&#123;</span><br><span class="line">        for(int i=1;i&lt;=算符种数;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(满足条件)</span><br><span class="line">            &#123;</span><br><span class="line">                保存结果;</span><br><span class="line">                if(到达目的) 输出解;</span><br><span class="line">                else</span><br><span class="line">                search(k+1);</span><br><span class="line">                恢复：保存结果之前的状态&#123;回溯一步&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void search(int x)  //搜索函数，全排列</span><br><span class="line">&#123;</span><br><span class="line">	for (int i = 1;i &lt;= n;i++)</span><br><span class="line">		if (!mark[i] &amp;&amp; check(num[x - 1], i))   </span><br><span class="line">		&#123;</span><br><span class="line">			num[x] = i;</span><br><span class="line">			mark[i] = true; //标记该数</span><br><span class="line">			if (x == n &amp;&amp; check(num[1], num[n])) print(); //判断并输出</span><br><span class="line">			search(x + 1);  //下一轮回溯</span><br><span class="line">			mark[i] = false;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/10/31/%E5%A0%86%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">堆排序</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2021 haifenggo
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
