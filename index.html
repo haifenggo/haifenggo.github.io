@@ -88,7 +88,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 13.33px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 16.67px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a>
+						<a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 12.5px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 17.5px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a>
 					</div>
 				</section>
 				
@@ -152,6 +152,138 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-树状数组" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/11/21/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" class="article-date">
+  	<time datetime="2021-11-21T11:43:43.000Z" itemprop="datePublished">2021-11-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/21/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+        树状数组
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">int  n;</span><br><span class="line">int  c[1000005];</span><br><span class="line">---------------</span><br><span class="line">int lowbit(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line">---------------</span><br><span class="line">void updata(int i, int k)//i的位置加k</span><br><span class="line">&#123;</span><br><span class="line">	while (i &lt;= n)</span><br><span class="line">	&#123;</span><br><span class="line">		c[i] += k;</span><br><span class="line">		i += lowbit(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">------------------</span><br><span class="line">int getsum(int i)//求1到i的和</span><br><span class="line">&#123;</span><br><span class="line">	int res = 0;</span><br><span class="line">	while (i &gt; 0)</span><br><span class="line">	&#123;</span><br><span class="line">		res += c[i];</span><br><span class="line">		i -= lowbit(i);</span><br><span class="line">	&#125;</span><br><span class="line">	return res;</span><br><span class="line">&#125;</span><br><span class="line">int getsum(int x, int y)//求x到y的和</span><br><span class="line">&#123;</span><br><span class="line">	return getsum(y) - getsum(x - 1);</span><br><span class="line">&#125;</span><br><span class="line">-----------------</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int m;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	for (int i = 1;i &lt;= n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int p;//n个p组成原数组</span><br><span class="line">		cin &gt;&gt; p;</span><br><span class="line">		updata(i, p);//更新为树状数组</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 0;i &lt; m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int k, x, y;</span><br><span class="line">		cin &gt;&gt;k&gt;&gt;x&gt;&gt;y;</span><br><span class="line">		if (k == 1)</span><br><span class="line">			updata(x, y);</span><br><span class="line">		else</span><br><span class="line">			cout &lt;&lt; getsum(x,y) &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">区间修改（差分）</span><br><span class="line">直接差分数组：update(i, a[i] - a[i - 1]);</span><br><span class="line">区间修改：update(r + 1, -k);</span><br><span class="line">		//区间操作就直接把1到右端点r+1的差分数组前缀和减去k，1到l的差分前缀和加上k</span><br><span class="line">		update(l, k);</span><br><span class="line">单点查询：getsum(x))；//前x项和</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-ST表" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/11/21/ST%E8%A1%A8/" class="article-date">
+  	<time datetime="2021-11-21T10:52:37.000Z" itemprop="datePublished">2021-11-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/21/ST%E8%A1%A8/">
+        ST表
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int read()</span><br><span class="line">&#123;</span><br><span class="line">	char c = getchar();int x = 0,f = 1;</span><br><span class="line">	while (c &lt; &#x27;0&#x27; || c&gt;&#x27;9&#x27;)if (c == &#x27;-&#x27;)f = -1, c = getchar();</span><br><span class="line">	while (c &gt;= &#x27;0&#x27; &amp;&amp; c &lt;= &#x27;9&#x27;)x = x * 10 + c - &#x27;0&#x27;, c = getchar();</span><br><span class="line">	return x * f;</span><br><span class="line">&#125;</span><br><span class="line">int Max[MAXN][21];</span><br><span class="line">int Query(int l, int r)</span><br><span class="line">&#123;</span><br><span class="line">	int k = log2(r - l + 1);</span><br><span class="line">	return max(Max[l][k], Max[r - (1 &lt;&lt; k) + 1][k]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int mian()</span><br><span class="line">&#123;</span><br><span class="line">	int N = read(), M = read();</span><br><span class="line">	for (int i = 1;i &lt;= N;i++)</span><br><span class="line">		Max[i][0] = read();</span><br><span class="line">	for (int j = 1;j &lt; 21;j++)</span><br><span class="line">		for (int i = 1;i + (1 &lt;&lt; j) - 1 &lt;= N;i++)</span><br><span class="line">			Max[i][j] = max(Max[i][j - 1], Max[i + (1 &lt;&lt; (j - 1))][j - 1]);</span><br><span class="line">	for (int i = 1;i &lt;= M;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int l = read(), r = read();</span><br><span class="line">		cout &lt;&lt; Query(l,r);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-并查集" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -185,7 +317,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int fa[MAX];</span><br><span class="line">int rank[MAX];</span><br><span class="line">void init(int n)</span><br><span class="line">&#123;</span><br><span class="line">	for (int i = 1;i &lt;= n;i++)</span><br><span class="line">		fa[i] = i, rank[i] = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>查询</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int find(int x)</span><br><span class="line">&#123;</span><br><span class="line">	if (fa[x] == x)</span><br><span class="line">		return x;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		fa[x] = find(fa[x]);</span><br><span class="line">		return fa[x];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line">int find(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return  x == fa[x] ? x : (fa = find(fa[x]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int find(int x)</span><br><span class="line">&#123;</span><br><span class="line">	if (fa[x] == x)</span><br><span class="line">		return x;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		fa[x] = find(fa[x]);</span><br><span class="line">		return fa[x];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line">int find(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return  x == fa[x] ? x : (fa[x] = find(fa[x]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>合并</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void merge(int i, int j)</span><br><span class="line">&#123;</span><br><span class="line">	int x = find(i), y = find(j);</span><br><span class="line">	if (rank[x] &lt;= rank[y])</span><br><span class="line">		fa[x] = y;</span><br><span class="line">	else</span><br><span class="line">		fa[y] = x;</span><br><span class="line">	if (rank[x] == rank[y] &amp;&amp; x != y)</span><br><span class="line">		rank++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -699,139 +831,9 @@
 
 
   
-    <article id="post-基数排序" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/24/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/" class="article-date">
-  	<time datetime="2021-10-24T13:08:28.000Z" itemprop="datePublished">2021-10-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/24/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">
-        基数排序
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>基数排序</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">int maxbit(int arr[], int n)//找最大位数</span><br><span class="line">&#123;</span><br><span class="line">	int max = arr[0];</span><br><span class="line">	for (int i = 1;i &lt; n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if (max &lt; arr[i])</span><br><span class="line">			max = arr[i];</span><br><span class="line">	&#125;</span><br><span class="line">	int d = 1;</span><br><span class="line">	int p = 10;</span><br><span class="line">	while (max &gt;= p)</span><br><span class="line">	&#123;</span><br><span class="line">		max /= 10;</span><br><span class="line">		d++;</span><br><span class="line">	&#125;</span><br><span class="line">	return d;</span><br><span class="line">&#125;</span><br><span class="line">void radixsort(int arr[], int n)</span><br><span class="line">&#123;</span><br><span class="line">	int d = maxbit(arr, n);</span><br><span class="line">	int* temp = new int[n];</span><br><span class="line">	int* count = new int[10];</span><br><span class="line">	int i, j, k;</span><br><span class="line">	int radix = 1;</span><br><span class="line">	for (i = 1;i &lt;= d;i++)</span><br><span class="line">	&#123;//每次对位数的值进行计数排序</span><br><span class="line">		for (j = 0;j &lt; 10;j++)</span><br><span class="line">			count[j] = 0;//每次都清空计数器</span><br><span class="line">		for (j = 0;j &lt; n;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			k = (arr[j] / radix) % 10;</span><br><span class="line">			count[k]++;</span><br><span class="line">		&#125;</span><br><span class="line">		for (j = 1;j &lt; 10;j++)</span><br><span class="line">			count[j] += count[j - 1];</span><br><span class="line">		for (j = n - 1;j &gt;= 0;j--)</span><br><span class="line">		&#123;</span><br><span class="line">			k = (arr[j] / radix) % 10;</span><br><span class="line">			temp[count[k] - 1] = arr[j];</span><br><span class="line">			count[k]--;</span><br><span class="line">		&#125;</span><br><span class="line">		for (j = 0;j &lt; n;j++)</span><br><span class="line">			arr[j] = temp[j];</span><br><span class="line">		radix *= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	delete[]temp;</span><br><span class="line">	delete[]count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%8E%92%E5%BA%8F/">排序</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-计数排序" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/24/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/" class="article-date">
-  	<time datetime="2021-10-24T10:53:53.000Z" itemprop="datePublished">2021-10-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/24/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/">
-        计数排序
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>计数排序</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">void countingsort(int arr[], int n)</span><br><span class="line">&#123;</span><br><span class="line">	int* sorted = new int[n];</span><br><span class="line">	int max = arr[0];</span><br><span class="line">	for (int i = 1;i &lt; n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if (arr[i] &gt; max)</span><br><span class="line">			max = arr[i];</span><br><span class="line">	&#125;</span><br><span class="line">	int* count = new int[max + 1];//max+1为最大数组下标，为arr[](max)</span><br><span class="line">	for (int i = 0;i &lt; max + 1;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		count[i] = 0;</span><br><span class="line">	&#125;</span><br><span class="line">	//记录频次</span><br><span class="line">	for (int i = 0;i &lt; n;i++)</span><br><span class="line">		count[arr[i]]++;</span><br><span class="line">	//累加计数</span><br><span class="line">	for (int i = 1;i &lt;= max;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		count[i] += count[i - 1];</span><br><span class="line">	&#125;</span><br><span class="line">	//确认最终位置</span><br><span class="line">	for (int i = n - 1;i &gt;= 0;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		sorted[count[arr[i]] - 1] = arr[i];//数值--&gt;数组下标-1</span><br><span class="line">		count[arr[i]]--;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 0;i &lt; n;i++)</span><br><span class="line">		arr[i] = sorted[i];</span><br><span class="line">	delete[]sorted;</span><br><span class="line">	delete[]count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%8E%92%E5%BA%8F/">排序</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 </div>
