@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>最小生成树 | Hello Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="链式前向星版prim 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#define inf 123456789#define maxn 5005#define maxm 200005using namespace std;struct edge &amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最小生成树">
+<meta property="og:url" content="http://example.com/2021/12/19/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/index.html">
+<meta property="og:site_name" content="Hello Blog">
+<meta property="og:description" content="链式前向星版prim 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#define inf 123456789#define maxn 5005#define maxm 200005using namespace std;struct edge &amp;#">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-19T08:29:38.000Z">
+<meta property="article:modified_time" content="2021-12-21T15:40:42.103Z">
+<meta property="article:author" content="haifenggo">
+<meta property="article:tag" content="图">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Hello Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">haifenggo</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/categories">Categories</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15px;">图</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 12.5px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 17.5px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m haifenggo.more information in my wechat.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/categories">Categories</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-最小生成树" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/12/19/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="article-date">
+  	<time datetime="2021-12-19T08:29:38.000Z" itemprop="datePublished">2021-12-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      最小生成树
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+	</div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 链式前向星版prim</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#define inf 123456789</span><br><span class="line">#define maxn 5005</span><br><span class="line">#define maxm 200005</span><br><span class="line">using namespace std;</span><br><span class="line">struct edge &#123;</span><br><span class="line">	int v, w, next;</span><br><span class="line">&#125;e[maxm&lt;&lt;1];</span><br><span class="line">int head[maxn], dis[maxn], cnt, n, m, tot, now = 1, ans;</span><br><span class="line">//已经加入最小生成树的的点到没有加入的点的最短距离，比如说1和2号节点已经加入了最小生成树，那么dis[3]就等于min(1-&gt;3,2-&gt;3)</span><br><span class="line"></span><br><span class="line">bool  vis[maxn];</span><br><span class="line">void add(int u, int v, int w) &#123;</span><br><span class="line">	e[++cnt].v = v;</span><br><span class="line">	e[cnt].w = w;</span><br><span class="line">	e[cnt].next = head[u];</span><br><span class="line">	head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line">void init() &#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	for (int i = 1, u, v, w;i &lt;= m;i++) &#123;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">		add(u, v, w), add(v, u, w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int prim() &#123;</span><br><span class="line">	for (int i = 2;i &lt;= n;i++)</span><br><span class="line">		dis[i] = inf;</span><br><span class="line">	for (int i = head[1];i;i = e[i].next)//这里要注意重边，所以要用到min</span><br><span class="line">		dis[e[i].v] = min(dis[e[i].v], e[i].w);</span><br><span class="line">	while (++tot &lt; n) &#123;</span><br><span class="line">		int minn = inf;</span><br><span class="line">		vis[now] = 1;</span><br><span class="line">		//标记点已经走过</span><br><span class="line">        //枚举每一个没有使用的点</span><br><span class="line">        //找出最小值作为新边</span><br><span class="line">        //注意这里不是枚举now点的所有连边，而是1~n</span><br><span class="line">		for (int i = 1;i &lt;= n;i++)</span><br><span class="line">			if (!vis[i] &amp;&amp; minn &gt; dis[i])</span><br><span class="line">				minn = dis[i], now = i;</span><br><span class="line">		ans += minn;</span><br><span class="line">		for (int i = head[now];i;i = e[i].next) &#123;</span><br><span class="line">			int v = e[i].v;</span><br><span class="line">			if (dis[v] &gt; e[i].w &amp;&amp; !vis[v])</span><br><span class="line">				dis[v] = e[i].w;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	init();</span><br><span class="line">	cout &lt;&lt; prim();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>邻接矩阵版prim</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">struct Edge &#123;</span><br><span class="line">	int begin;</span><br><span class="line">	int end;</span><br><span class="line">	int weight;</span><br><span class="line">&#125;mst[N];</span><br><span class="line">void Prim(Graph* g, Edge* mst, int v) &#123;</span><br><span class="line">	int MaxValue = 100000;</span><br><span class="line">	int i, j, k, min, m, t, w;</span><br><span class="line">	Edge temp;</span><br><span class="line">	for(i=0;i&lt;g-&gt;vCnt;i++)//边集数组mst初始化</span><br><span class="line">		if (i &lt; v) &#123;</span><br><span class="line">			mst[i].begin = v;</span><br><span class="line">			mst[i].end = i;</span><br><span class="line">			mst[i].weight = g-&gt;adjMatrix[v][i];</span><br><span class="line">		&#125;</span><br><span class="line">		else if (i &gt; v) &#123;</span><br><span class="line">			mst[i-1].begin = v;</span><br><span class="line">			mst[i-1].end = i;</span><br><span class="line">			mst[i-1].weight = g-&gt;adjMatrix[v][i];</span><br><span class="line">		&#125;</span><br><span class="line">	for (k = 0;k &lt; g-&gt;vCnt-1;k++) &#123;//求出mst的n-1条边</span><br><span class="line">		min = MaxValue;</span><br><span class="line">		m = k;</span><br><span class="line">		//U为生成树集合，V为剩余顶点集合</span><br><span class="line">		for (j = k;j &lt; g-&gt;vCnt;j++)//找到从U到V的最短边</span><br><span class="line">			if (mst[j].weight &lt; min)</span><br><span class="line">				min = mst[j].weight, m = j;</span><br><span class="line"></span><br><span class="line">		temp = mst[k];//把最短边交换到mst[k]的位置，此时需要重载</span><br><span class="line">		mst[k] = mst[m];</span><br><span class="line">		mst[m] = temp;</span><br><span class="line"></span><br><span class="line">		j = mst[k].end;//用于刚进入U的顶点</span><br><span class="line">		for (i = k + 1;i &lt; g-&gt;vCnt - 1;i++) &#123;//检查并修改V中更顶点到U的最短边</span><br><span class="line">			t = mst[i].end;</span><br><span class="line">			w = g-&gt;adjMatrix[j][t];</span><br><span class="line">			if (w &lt; mst[i].weight)</span><br><span class="line">				mst[i].weight = w, mst[i].begin = j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无邻接矩阵版kruskal</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#define N 5000</span><br><span class="line">using namespace std;</span><br><span class="line">int fa[N];</span><br><span class="line">int n, m, i, j, u, v, total,ans;</span><br><span class="line">struct edge &#123;</span><br><span class="line">	int start;</span><br><span class="line">	int to;</span><br><span class="line">	int val;</span><br><span class="line">&#125;bian[N&lt;&lt;1];</span><br><span class="line">int find(int x) &#123;</span><br><span class="line">	if (fa[x] == x)return x;</span><br><span class="line">	return fa[x] = find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line">bool cmp(edge a, edge b) &#123;</span><br><span class="line">	return a.val &lt; b.val;</span><br><span class="line">&#125;</span><br><span class="line">void kruskal(int n,int m) &#123;</span><br><span class="line">	for (i = 1;i &lt;= n;i++)fa[i] = i;</span><br><span class="line">	for (j = 1;j &lt;= m;j++)cin &gt;&gt; bian[j].start &gt;&gt; bian[j].to &gt;&gt; bian[j].val;</span><br><span class="line">	sort(bian + 1, bian + 1 + m, cmp);//快排</span><br><span class="line">	for (int i = 1;i &lt;= m;i++) &#123;</span><br><span class="line">		u = find(bian[i].start);</span><br><span class="line">		v = find(bian[i].to);</span><br><span class="line">		if (u == v)continue;//同祖先就跳过该边</span><br><span class="line">		ans += bian[i].val;</span><br><span class="line">		fa[u] = v;//更新祖先</span><br><span class="line">		total++;</span><br><span class="line">		if (total == n - 1)break;//n-1条边，最小生成树已经形成</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	kruskal(n, m);</span><br><span class="line">	cout &lt;&lt; ans;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>邻接矩阵版kruskal</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">void kruskal(Graph* g,Edge* mst) &#123;</span><br><span class="line">	int i, j, eCount, k, NUM = 0, edgeNum = 0, n1 = 0, n2 = 0;</span><br><span class="line">	int** set;</span><br><span class="line">	Edge* edges, tmp;</span><br><span class="line"></span><br><span class="line">	eCount = getECount(g);//求出边数</span><br><span class="line">	edges = (Edge*)malloc(sizeof(Edge) * eCount);//创建边的数组集合，包括每条边的起始端点，末端点和边的权重</span><br><span class="line"></span><br><span class="line">	//创建二维数组set，为顶点连通集合</span><br><span class="line">	set = (int**)malloc(sizeof(int*) * g-&gt;vCnt);</span><br><span class="line">	for (i = 0;i &lt; g-&gt;vCnt;i++)</span><br><span class="line">		set[i] = (int*)malloc(sizeof(int) * g-&gt;vCnt);</span><br><span class="line"></span><br><span class="line">	//此处是插入法对边集合按照边的权重从小到大排序</span><br><span class="line">	for (i = 0;i &lt; g-&gt;vCnt;i++) &#123;</span><br><span class="line">		for (j = 0;j &lt; i;j++) &#123;</span><br><span class="line">			if (g-&gt;adjMatrix[i][j] &lt;= 0)</span><br><span class="line">				continue;</span><br><span class="line">			tmp.begin = i;</span><br><span class="line">			tmp.end = j;</span><br><span class="line">			tmp.weight = g-&gt;adjMatrix[i][j];</span><br><span class="line">			for (k = NUM - 1;k &gt;= 0;k--) &#123;</span><br><span class="line">				if (edges[k].weight &gt; tmp.weight)</span><br><span class="line">					edges[k + 1] = edges[k];</span><br><span class="line">				else</span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">			edges[k + 1] = tmp;</span><br><span class="line">			NUM++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//初始化顶点集合，刚开始时有多少个顶点就有多少个连通集合，代表所有的点都还没有开始连通</span><br><span class="line">	for(i=0;i &lt; g-&gt;vCnt;i++)//set的每行i代表一个顶点</span><br><span class="line">		for (j = 0;j &lt; g-&gt;vCnt;j++) &#123;//即对于每个顶点，他对其他顶点的连通情况如何</span><br><span class="line">			if (i == j)//对于一个相同顶点，自己和自己连通嘛</span><br><span class="line">				set[i][j] = 1;</span><br><span class="line">			else</span><br><span class="line">				set[i][j] = 0;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	k = 0;</span><br><span class="line">	while (k &lt; g-&gt;vCnt-1) &#123;//k为已加入最小生成树的边数，只需加n-1条即可哦</span><br><span class="line">		//这两个for循环是对于set集合而言的，用来判断连通情况</span><br><span class="line">		for(i = 0;i &lt; g-&gt;vCnt;i++)</span><br><span class="line">			for (j = 0;j &lt; g-&gt;vCnt;j++) &#123;</span><br><span class="line">				//反向思维排除法</span><br><span class="line">				//对于当前边edgeNum</span><br><span class="line">				if (edges[edgeNum].begin == j &amp;&amp; set[i][j] == 1)</span><br><span class="line">					//对于begin端点，他总会是一个顶点j，他与顶点i连通时，n1=i；</span><br><span class="line">					n1 = i;</span><br><span class="line">				if (edges[edgeNum].end == j &amp;&amp; set[i][j] == 1)</span><br><span class="line">					n2 = i;</span><br><span class="line">				//如果在同一个i不同j的情况下确定n1，n2，则他们在同一连通集合，说明会构成回路</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		if (n1 != n2) &#123;//edgeNum边的两端点不连通情况</span><br><span class="line">			mst[k] = edges[edgeNum];k++;//加入最小生成树集合</span><br><span class="line"></span><br><span class="line">			for (j = 0;j &lt; g-&gt;vCnt;j++) &#123;//合并edgeNum新边的两个端点的连通集合</span><br><span class="line">				set[n1][j] = (set[n1][j] + set[n2][j]) % 2;</span><br><span class="line">				set[n2][j] = 0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		edgeNum++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/12/22/%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          单源最短路径
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/12/19/%E5%9B%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">图</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 haifenggo
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

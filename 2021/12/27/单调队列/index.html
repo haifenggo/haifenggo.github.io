@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>单调队列 | Hello Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="实现单调队列，主要分为三个部分：  去尾操作* ：*队尾元素出队列**。当队列有新元素待入队，需要从队尾开始，删除影响队列单调性的元素，维护队列的单调性。(删除一个队尾元素后，就重新判断新的队尾元素)  去尾操作结束后，将该新元素入队列。  删头操作* ：*队头元素出队列**。判断队头元素是否在待求解的区间之内，如果不在，就将其删除。（这个很好理解呀，因为单调队列的队头元素就是待求解区间的极值）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单调队列">
+<meta property="og:url" content="http://example.com/2021/12/27/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/index.html">
+<meta property="og:site_name" content="Hello Blog">
+<meta property="og:description" content="实现单调队列，主要分为三个部分：  去尾操作* ：*队尾元素出队列**。当队列有新元素待入队，需要从队尾开始，删除影响队列单调性的元素，维护队列的单调性。(删除一个队尾元素后，就重新判断新的队尾元素)  去尾操作结束后，将该新元素入队列。  删头操作* ：*队头元素出队列**。判断队头元素是否在待求解的区间之内，如果不在，就将其删除。（这个很好理解呀，因为单调队列的队头元素就是待求解区间的极值）">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdn.net/20171025173223855?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZXIxMTFlcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="article:published_time" content="2021-12-27T08:41:17.000Z">
+<meta property="article:modified_time" content="2021-12-27T08:54:45.255Z">
+<meta property="article:author" content="haifenggo">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20171025173223855?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZXIxMTFlcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+  
+    <link rel="alternative" href="/atom.xml" title="Hello Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">haifenggo</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/categories">Categories</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15px;">图</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 12.5px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 17.5px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m haifenggo.more information in my wechat.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/categories">Categories</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-单调队列" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/12/27/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" class="article-date">
+  	<time datetime="2021-12-27T08:41:17.000Z" itemprop="datePublished">2021-12-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      单调队列
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+	</div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>实现单调队列，主要分为三个部分：</p>
+<ul>
+<li><em><strong>去尾操作*</strong> ：</em>*队尾元素出队列**。当队列有新元素待入队，需要从队尾开始，删除影响队列单调性的元素，维护队列的单调性。(删除一个队尾元素后，就重新判断新的队尾元素)</li>
+</ul>
+<p><strong>去尾操作结束后，将该新元素入队列。</strong></p>
+<ul>
+<li><em><strong>删头操作*</strong> ：</em>*队头元素出队列**。判断队头元素是否在待求解的区间之内，如果不在，就将其删除。（这个很好理解呀，因为单调队列的队头元素就是待求解区间的极值）</li>
+<li>*<strong>取解操作*</strong> ：经过上面两个操作，取出 <strong>队列的头元素</strong> ，就是 <strong>当前区间的极值</strong> 。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e59d51e1eef5">来源</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">// 手写单调队列 </span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int maxn = 1e6 + 5;</span><br><span class="line">int n, k, head, tail, a[maxn];</span><br><span class="line"></span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    // id:index val:value </span><br><span class="line">    int id, val;</span><br><span class="line">&#125;</span><br><span class="line">q[maxn];// 手写队列 </span><br><span class="line"></span><br><span class="line">inline void work_min()</span><br><span class="line">&#123;</span><br><span class="line">    head = 1, tail = 0;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        while (head &lt;= tail &amp;&amp; a[i] &lt;= q[tail].val)tail--;</span><br><span class="line">        q[++tail].id = i;</span><br><span class="line">        q[tail].val = a[i];</span><br><span class="line"></span><br><span class="line">        while (q[head].id &lt;= i - k)head++;</span><br><span class="line">        if (i &gt;= k)printf(&quot;%d &quot;, q[head].val);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inline void work_max()</span><br><span class="line">&#123;</span><br><span class="line">    head = 1, tail = 0;//初始化 </span><br><span class="line">    for (int i = 1;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        // 队列非空 且 待入队元素大于队列尾元素</span><br><span class="line">        // 队尾元素出队 </span><br><span class="line">        while (head &lt;= tail &amp;&amp; a[i] &gt;= q[tail].val)tail--;// 去尾操作 </span><br><span class="line">        // 新元素入队</span><br><span class="line">        q[++tail].id = i;</span><br><span class="line">        q[tail].val = a[i];</span><br><span class="line"></span><br><span class="line">        // 队列非空 且  index小于 i-k+1(或者说 index小于等于 i-k) </span><br><span class="line">        // 队头元素出队 </span><br><span class="line">        while (q[head].id &lt;= i - k)head++;// 删头操作 </span><br><span class="line">        if (i &gt;= k)printf(&quot;%d &quot;, q[head].val);// 取解 </span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;k);</span><br><span class="line">    for (int i = 1;i &lt;= n;i++)scanf(&quot;%d&quot;, &amp;a[i]);</span><br><span class="line">    work_min();</span><br><span class="line">    work_max();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdn.net/20171025173223855?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZXIxMTFlcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/12/27/%E4%B8%89%E5%88%86%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          三分法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/12/22/%E4%BB%BB%E4%B8%80%E9%A1%B6%E7%82%B9%E5%AF%B9%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">任一顶点对最短路径</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 haifenggo
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
