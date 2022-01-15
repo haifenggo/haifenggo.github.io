@@ -152,6 +152,62 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-坐标表示" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/10/30/%E5%9D%90%E6%A0%87%E8%A1%A8%E7%A4%BA/" class="article-date">
+  	<time datetime="2021-10-30T03:07:16.000Z" itemprop="datePublished">2021-10-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/30/%E5%9D%90%E6%A0%87%E8%A1%A8%E7%A4%BA/">
+        坐标表示
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">int n, m, k, a, b, ans;</span><br><span class="line">int s[5005][5005];</span><br><span class="line"></span><br><span class="line">bool pd(int x, int y) &#123; //判断是否越界 </span><br><span class="line">    if (x &lt; 1 || y &lt; 1 || x &gt; n || y &gt; n) return 0;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k); //读入 </span><br><span class="line">    for (int i = 1; i &lt;= m + k; i++) &#123; //由于计算火把和萤石的步骤很像，所以合并了 </span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;a, &amp;b); //读入坐标 </span><br><span class="line">        for (int x = -2; x &lt;= 2; x++)</span><br><span class="line">            for (int y = -2; y &lt;= 2; y++) //枚举5*5的方阵(通过计算距离) </span><br><span class="line">                if ((i &gt; m || abs(x) + abs(y) &lt;= 2) &amp;&amp; pd(x + a, b + y))</span><br><span class="line">                    //如果是萤石(i &gt; m)或者x与y的坐标差的和不超过2(火把光照距离不超过2)并且</span><br><span class="line">                    //没有越界就标记 </span><br><span class="line">                    s[x + a][b + y]++;</span><br><span class="line">	|暗|暗| 光 |暗|暗| 			</span><br><span class="line">    |暗|光| 光 |光|暗|			</span><br><span class="line">    |光|光|火把|光|光|</span><br><span class="line">    |暗|光| 光 |光|暗|</span><br><span class="line">    |暗|暗| 光 |暗|暗|   </span><br><span class="line">    </span><br><span class="line">    |光|光| 光 |光|光|</span><br><span class="line">    |光|光| 光 |光|光|</span><br><span class="line">    |光|光|萤石|光|光|</span><br><span class="line">    |光|光| 光 |光|光|</span><br><span class="line">    |光|光| 光 |光|光|</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-高精度计算" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -741,74 +797,6 @@
 	<a class="article-category-link" href="/categories/%E6%8E%92%E5%BA%8F/">排序</a>
 	</div>
 
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-数学" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/17/%E6%95%B0%E5%AD%A6/" class="article-date">
-  	<time datetime="2021-10-17T03:22:13.000Z" itemprop="datePublished">2021-10-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/17/%E6%95%B0%E5%AD%A6/">
-        数学
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>辗转相除法</strong></p>
-<p>最大公约数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	//循环				//m&gt;n</span><br><span class="line">int fun(int m,int n)&#123;</span><br><span class="line">	int rem;			//余数，当余数为0的时候，最后的m(除数)即为最大公约数</span><br><span class="line">	//先用较小的数对较大的数取余，再用余数对较小的数求余，直到余数为零 </span><br><span class="line">	while(n &gt; 0)&#123;</span><br><span class="line">		rem = m % n;</span><br><span class="line">		m = n;</span><br><span class="line">		n = rem;</span><br><span class="line">	&#125;</span><br><span class="line">	return m;</span><br><span class="line">	</span><br><span class="line">	//递归</span><br><span class="line">int gcd(int a,int b) &#123;</span><br><span class="line">	return b&gt;0 ? gcd(b,a%b):a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>排列</strong></p>
-<p>字符串排列next_permutation代码实现</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">void inline swap(char* s1, char* s2)</span><br><span class="line">&#123;</span><br><span class="line">	char t = *s1;</span><br><span class="line">	*s1 = *s2;</span><br><span class="line">	*s2 = t;</span><br><span class="line">&#125;</span><br><span class="line">void reverse(char* s, char* e)// s, e分别开始和结尾，不能反转中文</span><br><span class="line">&#123;</span><br><span class="line">	for (e--;s &lt; e;s++,e--)</span><br><span class="line">		swap(s, e);</span><br><span class="line">&#125;</span><br><span class="line">bool next_permutation(char* start, char* end)//排列下一次</span><br><span class="line">&#123;</span><br><span class="line">	char* cur = end -1, * pre = cur - 1;</span><br><span class="line">	while (cur &gt; start &amp;&amp; *pre &gt;= *cur)cur--, pre--;</span><br><span class="line">	if (cur &lt;= start)return false;</span><br><span class="line">	for (cur = end-1 ;*cur &lt;= *pre;cur--)</span><br><span class="line">		;//找到逆序中大于*pre的元素的最小元素</span><br><span class="line">	swap(cur, pre);</span><br><span class="line">	reverse(pre + 1, end);//将尾部的逆序变成正序</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br><span class="line">输入12345-----输出12354</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
-	</div>
-
-      
 
       
       <div class="clearfix"></div>
