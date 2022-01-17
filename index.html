@@ -88,7 +88,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15px;">图</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 12.5px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 17.5px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a>
+						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 10px;">图算法</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 12.5px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 17.5px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a>
 					</div>
 				</section>
 				
@@ -151,6 +151,75 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-负环" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/01/15/%E8%B4%9F%E7%8E%AF/" class="article-date">
+  	<time datetime="2022-01-15T13:15:11.000Z" itemprop="datePublished">2022-01-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/15/%E8%B4%9F%E7%8E%AF/">
+        负环
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman-Ford算法"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35987777/article/details/106154893">Bellman-Ford算法</a></h1><p><strong>目的:</strong> 解决含负权边的单源最短路径问题，同时可以判断是否存在负权回路</p>
+<p>（1）初始化：将除起点s外所有顶点的距离数组置无穷大 d[v] = INF, d[s] = 0<br>（2）迭代：遍历图中的每条边，对边的两个顶点分别进行一次松弛操作，直到没有点能被再次松弛<br>（3）判断负圈：如果迭代超过V-1次，则存在负圈</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#define MAX 0x3f3f3f3f  </span><br><span class="line">#define N 1010  </span><br><span class="line"></span><br><span class="line">int nodenum, edgenum, original; //点，边，起点  </span><br><span class="line">typedef struct Edge //边  </span><br><span class="line">&#123;  </span><br><span class="line">    int u, v;  </span><br><span class="line">    int cost;  </span><br><span class="line">&#125;Edge;  </span><br><span class="line">   </span><br><span class="line">Edge edge[N];  </span><br><span class="line">int dis[N], pre[N];  </span><br><span class="line">   </span><br><span class="line">bool Bellman_Ford()  </span><br><span class="line">&#123;  </span><br><span class="line">    for(int i = 1; i &lt;= nodenum; ++i) //初始化  </span><br><span class="line">        dis[i] = (i == original ? 0 : MAX);  </span><br><span class="line">        </span><br><span class="line">    for(int i = 1; i &lt;= nodenum - 1; ++i)  </span><br><span class="line">        for(int j = 1; j &lt;= edgenum; ++j)  </span><br><span class="line">            if(dis[edge[j].v] &gt; dis[edge[j].u] + edge[j].cost) //松弛</span><br><span class="line">            &#123;  </span><br><span class="line">                dis[edge[j].v] = dis[edge[j].u] + edge[j].cost;  </span><br><span class="line">                pre[edge[j].v] = edge[j].u;  </span><br><span class="line">            &#125;  </span><br><span class="line">            </span><br><span class="line">    bool flag = 1; //判断是否含有负权回路  </span><br><span class="line">    for(int i = 1; i &lt;= edgenum; ++i)  </span><br><span class="line">        if(dis[edge[i].v] &gt; dis[edge[i].u] + edge[i].cost)  </span><br><span class="line">        &#123;  </span><br><span class="line">            flag = 0;  </span><br><span class="line">            break;  </span><br><span class="line">        &#125;  </span><br><span class="line">        return flag;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">void print_path(int root) //打印最短路的路径（反向）  </span><br><span class="line">&#123;  </span><br><span class="line">    while(root != pre[root]) //前驱  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf(&quot;%d--&gt;&quot;, root);  </span><br><span class="line">        root = pre[root];  </span><br><span class="line">    &#125;  </span><br><span class="line">    if(root == pre[root])  </span><br><span class="line">        printf(&quot;%d\n&quot;, root);  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<h1 id="SPFA（Bellman-Ford算法改进版本）"><a href="#SPFA（Bellman-Ford算法改进版本）" class="headerlink" title="SPFA（Bellman-Ford算法改进版本）"></a>SPFA（Bellman-Ford算法改进版本）</h1><p><strong>思想：</strong> 松弛操作必定只会发生在最短路径前导节点松弛成功过的节点上，用一个队列记录松弛过的节点，可以避免了冗余计算。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">int SPFA(int s) &#123;</span><br><span class="line">      queue&lt;int&gt; q; </span><br><span class="line">      bool inq[maxn] = &#123;false&#125;; </span><br><span class="line">      for(int i = 1; i &lt;= N; i++) dis[i] = 2147483647; </span><br><span class="line">      dis[s] = 0; </span><br><span class="line">      q.push(s); inq[s] = true; </span><br><span class="line">      while(!q.empty()) &#123; </span><br><span class="line">          int x = q.front(); q.pop(); </span><br><span class="line">          inq[x] = false;</span><br><span class="line">          for(int i = front[x]; i !=0 ; i = e[i].next) &#123;</span><br><span class="line">              int k = e[i].v;</span><br><span class="line">              if(dis[k] &gt; dis[x] + e[i].w) &#123;</span><br><span class="line">                  dis[k] = dis[x] + e[i].w;</span><br><span class="line">                  if(!inq[k]) &#123;</span><br><span class="line">                      inq[k] = true;</span><br><span class="line">                      q.push(k);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      for(int i =  1; i &lt;= N; i++) cout &lt;&lt; dis[i] &lt;&lt; &#x27; &#x27;;</span><br><span class="line">      cout &lt;&lt; endl;</span><br><span class="line">      return 0;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" rel="tag">图算法</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E5%9B%BE/">图</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-乘法逆元" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -746,70 +815,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-KMP字符串匹配" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/12/13/KMP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" class="article-date">
-  	<time datetime="2021-12-13T06:27:49.000Z" itemprop="datePublished">2021-12-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/13/KMP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/">
-        KMP字符串匹配
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">void cal_next(char* str, int* next, int len) &#123;</span><br><span class="line">	int i, j;</span><br><span class="line">	next[0] = -1;</span><br><span class="line">	for (i = 1;i &lt; len;i++) &#123;//对于模式串中字符i来说</span><br><span class="line">		j = next[i - 1];//首先使j等于前后缀相同的数量，即模式串数组下标的前缀后一位</span><br><span class="line">		while (str[j + 1] != str[i] &amp;&amp; (j &gt;= 0))j = next[j];</span><br><span class="line">		//判断模式串数组前缀后一位是否等于目前模式串中的字符i。j=-1为特判。</span><br><span class="line">		//若不相等，则该最长前缀不能包含字符i了，该最长公缀字符串需要更新了，更新为该字符串的最长前缀字符串，特判j=-1，更新不了了。</span><br><span class="line">		if (str[i] == str[j + 1])next[i] = j + 1;//包含的了字符i，最长前缀长度加1.</span><br><span class="line">		else next[i] = -1;//是特判的情况，为-1.</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int KMP(char* str, int slen, char* ptr, int plen, int* next) &#123;</span><br><span class="line">	int s_i = 0, p_i = 0;</span><br><span class="line">	while (s_i &lt; slen &amp;&amp; p_i &lt; plen) &#123;</span><br><span class="line">		if (str[s_i] == ptr[p_i]) &#123;</span><br><span class="line">			s_i++;p_i++;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			if (p_i == 0)s_i++;</span><br><span class="line">			else p_i = next[p_i - 1] + 1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return (p_i == plen) ? (s_i - plen) : -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
 	</div>
 
 

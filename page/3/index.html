@@ -88,7 +88,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15px;">图</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 12.5px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 17.5px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a>
+						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 10px;">图算法</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 20px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 12.5px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 17.5px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a>
 					</div>
 				</section>
 				
@@ -151,6 +151,70 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-堆排序" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/10/31/%E5%A0%86%E6%8E%92%E5%BA%8F/" class="article-date">
+  	<time datetime="2021-10-31T09:22:20.000Z" itemprop="datePublished">2021-10-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/31/%E5%A0%86%E6%8E%92%E5%BA%8F/">
+        堆排序
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">void adjust(vector&lt;int&gt;&amp; arr, int len, int index)</span><br><span class="line">&#123;</span><br><span class="line">    int left = 2 * index + 1;</span><br><span class="line">    int right = 2 * index + 2;</span><br><span class="line">    int maxIdx = index;</span><br><span class="line">    if (left&lt;len &amp;&amp; arr[left]&gt;arr[maxIdx])maxIdx = left;</span><br><span class="line">    if (right&lt;len &amp;&amp; arr[right]&gt;arr[maxIdx])maxIdx = right;</span><br><span class="line">    if (maxIdx != index)</span><br><span class="line">    &#123;</span><br><span class="line">        swap(arr[maxIdx], arr[index]);</span><br><span class="line">        adjust(arr, len, maxIdx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void buildheap(vector&lt;int&gt;&amp; arr, int size)</span><br><span class="line">&#123;</span><br><span class="line">    for (int i = size / 2 - 1;i &gt;= 0;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        adjust(arr, size, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void heapsort(vector&lt;int&gt;&amp; arr, int size)</span><br><span class="line">&#123;</span><br><span class="line">    buildheap(arr, size);</span><br><span class="line">    for (int i = size - 1;i &gt;= 1;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        swap(arr[0], arr[i]);</span><br><span class="line">        adjust(arr, i, 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%8E%92%E5%BA%8F/">排序</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-坐标表示" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -716,70 +780,6 @@
       
         <p><strong>插入排序</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void InsertSort(int ar[], int n) &#123;</span><br><span class="line">    for (int i=1;i &lt; n;i++) &#123;</span><br><span class="line">        if (ar[i] &lt; ar[i-1]) &#123;</span><br><span class="line">            int j = i - 1;</span><br><span class="line">            //复制出哨兵x</span><br><span class="line">            int x = ar[i];</span><br><span class="line">            //移动比哨兵大的数</span><br><span class="line">            while (j &gt; 0 &amp;&amp; x &lt; ar[j]) &#123;</span><br><span class="line">                ar[j + 1] = ar[j];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            //把哨兵放在ar[j]后面</span><br><span class="line">            ar[j+1] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%8E%92%E5%BA%8F/">排序</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-冒泡排序" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/22/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" class="article-date">
-  	<time datetime="2021-10-22T13:10:30.000Z" itemprop="datePublished">2021-10-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/22/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">
-        冒泡排序
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void BubbleSort(int arr[], int n)</span><br><span class="line">&#123;</span><br><span class="line">	//每次把最大值放在最后边</span><br><span class="line">	for (int i = 0;i &lt; n - 1;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for (int j = 0;j &lt; n - i - 1;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if (arr[j] &gt; arr[j + 1])</span><br><span class="line">			&#123;</span><br><span class="line">				int temp = arr[j];</span><br><span class="line">				arr[j] = arr[j + 1];</span><br><span class="line">				arr[j + 1] = temp;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
