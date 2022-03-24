@@ -88,7 +88,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 14px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 10px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 18px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 12px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 16px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a>
+						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 16px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 10px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 18px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 12px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 14px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a>
 					</div>
 				</section>
 				
@@ -151,6 +151,284 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-拓扑排序" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/20/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" class="article-date">
+  	<time datetime="2022-03-20T08:42:37.000Z" itemprop="datePublished">2022-03-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/20/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">
+        拓扑排序
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>拓扑排序步骤如下：<br>（1）定义一个队列Q，并把所有入度为0的结点加入队列<br>（2）取队首结点，访问输出，然后删除所有从它出发的边，并令这些边到达的顶点的入度减1，如果某个顶点的入度减为0，则将其加入队列。<br>（3）重复进行（2）操作，直到队列为空。如果队列为空时入过队的结点数恰好为N，说明拓扑排序成功，图G为有向无环图；否则，拓扑排序失败，图G有环。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">void tp_sort(int  num（节点数量）,vector&lt;vector&lt;int&gt;&gt;&amp;arr(邻接矩阵))&#123;</span><br><span class="line">//以下一到三步根据实际题目，但一般实际中会给出邻接矩阵，代码实现时使用邻接表容易实现</span><br><span class="line">    //第一步，建立邻接表</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; edge(num);</span><br><span class="line">    //第二步，建立一个结点入度的数组</span><br><span class="line">    vector&lt;int&gt; indeg(num);</span><br><span class="line">    //第三步，将数据存入邻接表，并将所有结点入度存入数组</span><br><span class="line">    for(auto info[]: arr)&#123;</span><br><span class="line">        edge[info[1]].push_back(info[0]);//此处0和1根据题目要求决定依赖的先后关系</span><br><span class="line">        indeg[info[0]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    //第四步，将入度为一的点加入队列</span><br><span class="line">    queue&lt;int&gt; qu;</span><br><span class="line">    for(int i=0;i&lt;indeg.size();i++)&#123;</span><br><span class="line">        if(indeg[i]==0)</span><br><span class="line">            qu.push(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    //第五步，若结点入度为0就出队列</span><br><span class="line">    int count=0;</span><br><span class="line">    while(!qu.empty())&#123;</span><br><span class="line">        count++;</span><br><span class="line">        int v = qu.front();</span><br><span class="line">        qu.pop();</span><br><span class="line">        for(auto v: edge[v])&#123;</span><br><span class="line">            indeg[v]--;</span><br><span class="line">            if(indeg[v]==0) qu.push(v);</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;    </span><br><span class="line">    return count==num;//最后如果输出的节点数==总结点数，说明无环</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-缩点" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/18/%E7%BC%A9%E7%82%B9/" class="article-date">
+  	<time datetime="2022-03-18T04:53:08.000Z" itemprop="datePublished">2022-03-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/18/%E7%BC%A9%E7%82%B9/">
+        缩点
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">vector&lt;int&gt;G[N];</span><br><span class="line">vector&lt;int&gt;g[N];</span><br><span class="line">stack&lt;int&gt;S;</span><br><span class="line">int w[N], d[N];</span><br><span class="line">bool inS[N];</span><br><span class="line">int dfn[N], low[N];</span><br><span class="line">int sta, cnt, num, be, fsum, f[N];</span><br><span class="line">struct node &#123;</span><br><span class="line">    int from, to;</span><br><span class="line">&#125;way[N];</span><br><span class="line">void Tarjan(int x) &#123;</span><br><span class="line">    num++;</span><br><span class="line">    dfn[x] = low[x] = num;</span><br><span class="line">    S.push(x);</span><br><span class="line">    inS[x] = 1;</span><br><span class="line">    for (int i = 0;i &lt; G[x].size();++i) &#123;</span><br><span class="line">        int s = G[x][i];</span><br><span class="line">        if (!dfn[s]) &#123;</span><br><span class="line">            Tarjan(s);</span><br><span class="line">            low[x] = min(low[x], low[s]);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (inS[s])</span><br><span class="line">            low[x] = min(low[x], dfn[s]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    if (low[x] == dfn[x]) &#123;</span><br><span class="line">        cnt++;</span><br><span class="line">        int now;</span><br><span class="line">        do &#123;</span><br><span class="line">            now = S.top();</span><br><span class="line">            S.pop();</span><br><span class="line">            d[now] = cnt;</span><br><span class="line">            inS[now] = 0;</span><br><span class="line">            if (now == sta)</span><br><span class="line">                be = cnt;</span><br><span class="line">            w[cnt] += w[now];</span><br><span class="line">        &#125; while (now != x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    for (int i = 1;i &lt;= m;i++) &#123;</span><br><span class="line">        int a, b;</span><br><span class="line">        cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        G[a].push_back(b);</span><br><span class="line">        way[i].from = a, way[i].to = b;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        cin &gt;&gt; w[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cin &gt;&gt; s &gt;&gt; sta;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        num = 0;</span><br><span class="line">        if (!dfn[i])Tarjan(i);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1;i &lt;= m;i++) &#123;</span><br><span class="line">        int a = d[way[i].from];</span><br><span class="line">        int b = d[way[i].to];</span><br><span class="line">        if (a != b)</span><br><span class="line">            g[a].push_back(b);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-欧拉路径" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/17/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/" class="article-date">
+  	<time datetime="2022-03-17T03:09:15.000Z" itemprop="datePublished">2022-03-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/17/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/">
+        欧拉路径
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>首先我们要确定出起点，然后从起点开始不走重复边的递归。</p>
+</li>
+<li><p>对于每一个点,当访问完所有的边时，把这个点加入答案序列。</p>
+</li>
+<li><p>最后，输出答案序列即为一条欧拉路径依次经过的点。</p>
+</li>
+</ul>
+<p><strong>Hierholzer 算法</strong></p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">stack&lt;int&gt;st;</span><br><span class="line">vector&lt;int&gt;G[N];</span><br><span class="line">int del[N];//记录目前删到第几条边，从删到的下一条边开始枚举，时间复杂度才能正确。</span><br><span class="line">int du[N][2];</span><br><span class="line">void dfs(int now) &#123;</span><br><span class="line">    for (int i = del[now];i &lt; G[now].size();i = del[now]) &#123;</span><br><span class="line">        del[now] = i + 1;</span><br><span class="line">        dfs(G[now][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    st.push(now);</span><br><span class="line">&#125;</span><br><span class="line"> //其中 del[now] 表示 G[now][1,2……,del[now]-1] 都已经被标记访问过，下一次要从G[now][del[now]]开始访问。</span><br><span class="line">int main() &#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    for (int i = 1;i &lt;= m;i++) &#123;</span><br><span class="line">        int u, v;</span><br><span class="line">        cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        G[u].push_back(v);</span><br><span class="line">        du[u][1]++;du[v][0]++;//入度出度</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        sort(G[i].begin(), G[i].end());//字典序</span><br><span class="line">    &#125;</span><br><span class="line">    int s = 1,cnt[2] = &#123; 0,0 &#125;;</span><br><span class="line">    bool f = 1;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;//欧拉路径判断</span><br><span class="line">        if (du[i][1] != du[i][0])f = 0;//非欧拉回路</span><br><span class="line">        if (du[i][1] - du[i][0] == 1)cnt[1]++, s = i;//起点s出度多1</span><br><span class="line">        if (du[i][0] - du[i][1] == 1)cnt[0]++;//若多于1个则不符合</span><br><span class="line">        //当然，一副图有欧拉路径，还必须满足将它的有向边视为无向边后它是连通的（不考虑度为0的孤立点），连通性的判断我们可以使用并查集或dfs等。</span><br><span class="line">    &#125;</span><br><span class="line">    if ((!f) &amp;&amp; !(cnt[0] == cnt[1] &amp;&amp; cnt[0] == 1)) printf(&quot;No&quot;);</span><br><span class="line">    else &#123;</span><br><span class="line">        dfs(s);</span><br><span class="line">        while (!st.empty()) &#123;</span><br><span class="line">            cout &lt;&lt; st.top() &lt;&lt; &#x27; &#x27;;st.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h3><p><img src="https://ae04.alicdn.com/kf/H8913f029940e4f0fbd1db61a3ff1bf5fW.png" alt="1206306-20170818160200881-1164016577.png"></p>
+<p>对于该图，算法的执行流程如下：</p>
+<p>step1： 找到该图没有奇点，从1开始进行 <strong>Hierholzer</strong> 算法。</p>
+<p>step2： 删边 1→2 递归到2</p>
+<p>step3： 删边 2→3 递归到3</p>
+<p>step4： 删边 3→7 递归到7</p>
+<p>step5： 删边 7→1 递归到1</p>
+<p>step6： 1无边，1加入队列，返回</p>
+<p>step7： 7加入队列，返回</p>
+<p>step8： 删边 3→4 递归到4</p>
+<p>step9： 删边 4→5 递归到5</p>
+<p>step10： 删边5→6 递归到6</p>
+<p>step11： 删边 6→3 递归到3</p>
+<p>step12： 3加入队列，返回</p>
+<p>step13： 6加入队列，返回</p>
+<p>step14： 5加入队列，返回</p>
+<p>step15： 4加入队列，返回</p>
+<p>step16： 3加入队列，返回</p>
+<p>step17： 2加入队列，返回</p>
+<p>step18： 1加入队列，返回</p>
+<p>答案队列为：1 7 3 6 5 4 3 2 1。反向输出即为答案。</p>
+<p>有向图除判断是否存在有一点点不同以外同理。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-最大流" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/17/%E6%9C%80%E5%A4%A7%E6%B5%81/" class="article-date">
+  	<time datetime="2022-03-17T02:06:30.000Z" itemprop="datePublished">2022-03-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/17/%E6%9C%80%E5%A4%A7%E6%B5%81/">
+        最大流
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>步骤</p>
+<p>利用bfs找到一条最短增广路径，记录该路径的最小流量<br>利用一个数组把这个路径上的流量更新<br>不断重复1 , 2直到没有增广路径为止</p>
+<p><strong>EK</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ll g[N][N], pre[N], dis[N];</span><br><span class="line">queue&lt;ll&gt;q;</span><br><span class="line">ll bfs(ll s,ll t) &#123;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++)pre[i] = -1;</span><br><span class="line">    while (!q.empty())q.pop();</span><br><span class="line">    q.push(s);</span><br><span class="line">    dis[s] = inf;</span><br><span class="line">    while (!q.empty()) &#123;</span><br><span class="line">        ll x = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        if (x == t)break;</span><br><span class="line">        for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">            if (pre[i] == -1 &amp;&amp; g[x][i]) &#123;</span><br><span class="line">                pre[i] = x;</span><br><span class="line">                dis[i] = min(dis[x], g[x][i]);</span><br><span class="line">                q.push(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (pre[t] == -1)return -1;</span><br><span class="line">    else return dis[t];</span><br><span class="line">&#125;</span><br><span class="line">ll EK(ll s, ll t) &#123;</span><br><span class="line">    ll inc, ans = 0;</span><br><span class="line">    while (1) &#123;</span><br><span class="line">        inc = bfs(s, t);</span><br><span class="line">        if (inc == -1)break;</span><br><span class="line">        ll k = t;</span><br><span class="line">        while (k != s) &#123;</span><br><span class="line">            g[k][pre[k]] += inc;</span><br><span class="line">            g[pre[k]][k] -= inc;</span><br><span class="line">            k = pre[k];</span><br><span class="line">        &#125;</span><br><span class="line">        ans += inc;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Dinic</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">int deep[N], g[N][N];</span><br><span class="line">queue&lt;int&gt;q;</span><br><span class="line">bool bfs() &#123;</span><br><span class="line">    while (!q.empty())q.pop();</span><br><span class="line">    memset(deep, -1, sizeof(deep));</span><br><span class="line">    deep[s] = 0;</span><br><span class="line">    q.push(s);</span><br><span class="line">    while (!q.empty()) &#123;</span><br><span class="line">        int x = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">            if (g[x][i] &gt; 0 &amp;&amp; deep[i] == -1) &#123;</span><br><span class="line">                deep[i] = deep[x] + 1;</span><br><span class="line">                q.push(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (deep[t] &gt; 0)return 1;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int dfs(int x,int mx) &#123;</span><br><span class="line">    int a;</span><br><span class="line">    if (x == t)return mx;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        if (g[x][i] &gt; 0 &amp;&amp; deep[i] == deep[x] + 1 &amp;&amp; (a = dfs(i, min(mx, g[x][i])))) &#123;</span><br><span class="line">            g[x][i] -= a;</span><br><span class="line">            g[i][x] += a;</span><br><span class="line">            return a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int dinic() &#123;</span><br><span class="line">    int ans = 0;</span><br><span class="line">    while (bfs()) &#123;</span><br><span class="line">        ans += dfs(s, inf);</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-堆" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -568,269 +846,9 @@
 
 
   
-    <article id="post-单调栈" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/12/27/%E5%8D%95%E8%B0%83%E6%A0%88/" class="article-date">
-  	<time datetime="2021-12-27T14:24:46.000Z" itemprop="datePublished">2021-12-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/27/%E5%8D%95%E8%B0%83%E6%A0%88/">
-        单调栈
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#define inf 9999999</span><br><span class="line">int n, a[inf], f[inf], q[inf],r;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    for (int i = n;i &gt; 0;i--) &#123;</span><br><span class="line">        while (r &gt; 0 &amp;&amp; a[i] &gt;= a[q[r]])r--;</span><br><span class="line">        f[i] = q[r];</span><br><span class="line">        q[++r] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        cout &lt;&lt; f[i] &lt;&lt; &#x27; &#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-三分法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/12/27/%E4%B8%89%E5%88%86%E6%B3%95/" class="article-date">
-  	<time datetime="2021-12-27T08:41:32.000Z" itemprop="datePublished">2021-12-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/27/%E4%B8%89%E5%88%86%E6%B3%95/">
-        三分法
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//秦九韶算法从里到外逐层计算一次多项式的值</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">F</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="keyword">double</span> sum=<span class="number">0</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line"> sum=sum*x+a[i];</span><br><span class="line"> <span class="keyword">return</span> sum; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-单调队列" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/12/27/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" class="article-date">
-  	<time datetime="2021-12-27T08:41:17.000Z" itemprop="datePublished">2021-12-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/27/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
-        单调队列
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>实现单调队列，主要分为三个部分：</p>
-<ul>
-<li><em><strong>去尾操作*</strong> ：</em>*队尾元素出队列**。当队列有新元素待入队，需要从队尾开始，删除影响队列单调性的元素，维护队列的单调性。(删除一个队尾元素后，就重新判断新的队尾元素)</li>
-</ul>
-<p><strong>去尾操作结束后，将该新元素入队列。</strong></p>
-<ul>
-<li><em><strong>删头操作*</strong> ：</em>*队头元素出队列**。判断队头元素是否在待求解的区间之内，如果不在，就将其删除。（这个很好理解呀，因为单调队列的队头元素就是待求解区间的极值）</li>
-<li>*<strong>取解操作*</strong> ：经过上面两个操作，取出 <strong>队列的头元素</strong> ，就是 <strong>当前区间的极值</strong> 。</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e59d51e1eef5">来源</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">// 手写单调队列 </span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int maxn = 1e6 + 5;</span><br><span class="line">int n, k, head, tail, a[maxn];</span><br><span class="line"></span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    // id:index val:value </span><br><span class="line">    int id, val;</span><br><span class="line">&#125;</span><br><span class="line">q[maxn];// 手写队列 </span><br><span class="line"></span><br><span class="line">inline void work_min()</span><br><span class="line">&#123;</span><br><span class="line">    head = 1, tail = 0;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        while (head &lt;= tail &amp;&amp; a[i] &lt;= q[tail].val)tail--;</span><br><span class="line">        q[++tail].id = i;</span><br><span class="line">        q[tail].val = a[i];</span><br><span class="line"></span><br><span class="line">        while (q[head].id &lt;= i - k)head++;</span><br><span class="line">        if (i &gt;= k)printf(&quot;%d &quot;, q[head].val);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inline void work_max()</span><br><span class="line">&#123;</span><br><span class="line">    head = 1, tail = 0;//初始化 </span><br><span class="line">    for (int i = 1;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        // 队列非空 且 待入队元素大于队列尾元素</span><br><span class="line">        // 队尾元素出队 </span><br><span class="line">        while (head &lt;= tail &amp;&amp; a[i] &gt;= q[tail].val)tail--;// 去尾操作 </span><br><span class="line">        // 新元素入队</span><br><span class="line">        q[++tail].id = i;</span><br><span class="line">        q[tail].val = a[i];</span><br><span class="line"></span><br><span class="line">        // 队列非空 且  index小于 i-k+1(或者说 index小于等于 i-k) </span><br><span class="line">        // 队头元素出队 </span><br><span class="line">        while (q[head].id &lt;= i - k)head++;// 删头操作 </span><br><span class="line">        if (i &gt;= k)printf(&quot;%d &quot;, q[head].val);// 取解 </span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;k);</span><br><span class="line">    for (int i = 1;i &lt;= n;i++)scanf(&quot;%d&quot;, &amp;a[i]);</span><br><span class="line">    work_min();</span><br><span class="line">    work_max();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdn.net/20171025173223855?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZXIxMTFlcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-任一顶点对最短路径" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/12/22/%E4%BB%BB%E4%B8%80%E9%A1%B6%E7%82%B9%E5%AF%B9%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" class="article-date">
-  	<time datetime="2021-12-22T03:44:15.000Z" itemprop="datePublished">2021-12-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/22/%E4%BB%BB%E4%B8%80%E9%A1%B6%E7%82%B9%E5%AF%B9%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">
-        任一顶点对最短路径
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>任一顶点对最短路径floyd—–动态规划</p>
-<p>a—-b和a—c—b距离比较，取小</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#define ms 10</span><br><span class="line">void floyd(MGraph g, int A[][ms], int path[][ms]) &#123;</span><br><span class="line">	int i, j, k;</span><br><span class="line">	//初始化</span><br><span class="line">	for (i = 0;i &lt; g.n;i++) </span><br><span class="line">		for (j = 0;j &lt; g.n;j++) &#123;</span><br><span class="line">			A[i][j] = g.edge[i][j];</span><br><span class="line">			path[i][j] = -1;</span><br><span class="line">		&#125;</span><br><span class="line">	//k为中间点，对顶点对&lt;i，j&gt;检测和修改</span><br><span class="line">	for (k = 0;k &lt; g.n;k++)</span><br><span class="line">		for(i = 0;i &lt; g.n;i++)</span><br><span class="line">			for(j= 0;j &lt; g.n;j++)</span><br><span class="line">				if (A[i][j] &gt; A[i][k] + A[k][j]) &#123;</span><br><span class="line">					A[i][j] = A[i][k] + A[k][j];</span><br><span class="line">					path[i][j] = k;</span><br><span class="line">				&#125;</span><br><span class="line">&#125;</span><br><span class="line">void printpath(int u, int v, int path[][ms]) &#123;</span><br><span class="line">	if (path[u][v] = -1)</span><br><span class="line">		cout &lt;&lt; u &lt;&lt; &quot;-&gt;&quot; &lt;&lt; v;//直接输出</span><br><span class="line">	else &#123;</span><br><span class="line">		int mid = path[u][v];</span><br><span class="line">		printpath(u, mid, path);</span><br><span class="line">		printpath(mid, v, path);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//原理：由 i 到 j 的最短路径中的一点 k，将最短路径分段为从 i 到 k 的最短路径 和 从 k 到 j 的最短路径，最短路径就为从i到k的最短路径+从k到j的最短路径，一直分段，直到分到 i 和 j 为同一点，停止</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E5%9B%BE/">图</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 </div>

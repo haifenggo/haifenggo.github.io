@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>欧拉路径 | Hello Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="首先我们要确定出起点，然后从起点开始不走重复边的递归。  对于每一个点,当访问完所有的边时，把这个点加入答案序列。  最后，输出答案序列即为一条欧拉路径依次经过的点。   Hierholzer 算法   1234567891011121314151617181920212223242526272829303132333435363738394041stack&lt;int&gt;st;vecto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="欧拉路径">
+<meta property="og:url" content="http://example.com/2022/03/17/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/index.html">
+<meta property="og:site_name" content="Hello Blog">
+<meta property="og:description" content="首先我们要确定出起点，然后从起点开始不走重复边的递归。  对于每一个点,当访问完所有的边时，把这个点加入答案序列。  最后，输出答案序列即为一条欧拉路径依次经过的点。   Hierholzer 算法   1234567891011121314151617181920212223242526272829303132333435363738394041stack&lt;int&gt;st;vecto">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ae04.alicdn.com/kf/H8913f029940e4f0fbd1db61a3ff1bf5fW.png">
+<meta property="article:published_time" content="2022-03-17T03:09:15.000Z">
+<meta property="article:modified_time" content="2022-03-17T08:36:39.883Z">
+<meta property="article:author" content="haifenggo">
+<meta property="article:tag" content="图">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ae04.alicdn.com/kf/H8913f029940e4f0fbd1db61a3ff1bf5fW.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hello Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">haifenggo</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/categories">Categories</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 16px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 10px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 18px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 12px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 14px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m haifenggo.more information in my wechat.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/categories">Categories</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-欧拉路径" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/17/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/" class="article-date">
+  	<time datetime="2022-03-17T03:09:15.000Z" itemprop="datePublished">2022-03-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      欧拉路径
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>首先我们要确定出起点，然后从起点开始不走重复边的递归。</p>
+</li>
+<li><p>对于每一个点,当访问完所有的边时，把这个点加入答案序列。</p>
+</li>
+<li><p>最后，输出答案序列即为一条欧拉路径依次经过的点。</p>
+</li>
+</ul>
+<p><strong>Hierholzer 算法</strong></p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">stack&lt;int&gt;st;</span><br><span class="line">vector&lt;int&gt;G[N];</span><br><span class="line">int del[N];//记录目前删到第几条边，从删到的下一条边开始枚举，时间复杂度才能正确。</span><br><span class="line">int du[N][2];</span><br><span class="line">void dfs(int now) &#123;</span><br><span class="line">    for (int i = del[now];i &lt; G[now].size();i = del[now]) &#123;</span><br><span class="line">        del[now] = i + 1;</span><br><span class="line">        dfs(G[now][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    st.push(now);</span><br><span class="line">&#125;</span><br><span class="line"> //其中 del[now] 表示 G[now][1,2……,del[now]-1] 都已经被标记访问过，下一次要从G[now][del[now]]开始访问。</span><br><span class="line">int main() &#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    for (int i = 1;i &lt;= m;i++) &#123;</span><br><span class="line">        int u, v;</span><br><span class="line">        cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        G[u].push_back(v);</span><br><span class="line">        du[u][1]++;du[v][0]++;//入度出度</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        sort(G[i].begin(), G[i].end());//字典序</span><br><span class="line">    &#125;</span><br><span class="line">    int s = 1,cnt[2] = &#123; 0,0 &#125;;</span><br><span class="line">    bool f = 1;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;//欧拉路径判断</span><br><span class="line">        if (du[i][1] != du[i][0])f = 0;//非欧拉回路</span><br><span class="line">        if (du[i][1] - du[i][0] == 1)cnt[1]++, s = i;//起点s出度多1</span><br><span class="line">        if (du[i][0] - du[i][1] == 1)cnt[0]++;//若多于1个则不符合</span><br><span class="line">        //当然，一副图有欧拉路径，还必须满足将它的有向边视为无向边后它是连通的（不考虑度为0的孤立点），连通性的判断我们可以使用并查集或dfs等。</span><br><span class="line">    &#125;</span><br><span class="line">    if ((!f) &amp;&amp; !(cnt[0] == cnt[1] &amp;&amp; cnt[0] == 1)) printf(&quot;No&quot;);</span><br><span class="line">    else &#123;</span><br><span class="line">        dfs(s);</span><br><span class="line">        while (!st.empty()) &#123;</span><br><span class="line">            cout &lt;&lt; st.top() &lt;&lt; &#x27; &#x27;;st.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h3><p><img src="https://ae04.alicdn.com/kf/H8913f029940e4f0fbd1db61a3ff1bf5fW.png" alt="1206306-20170818160200881-1164016577.png"></p>
+<p>对于该图，算法的执行流程如下：</p>
+<p>step1： 找到该图没有奇点，从1开始进行 <strong>Hierholzer</strong> 算法。</p>
+<p>step2： 删边 1→2 递归到2</p>
+<p>step3： 删边 2→3 递归到3</p>
+<p>step4： 删边 3→7 递归到7</p>
+<p>step5： 删边 7→1 递归到1</p>
+<p>step6： 1无边，1加入队列，返回</p>
+<p>step7： 7加入队列，返回</p>
+<p>step8： 删边 3→4 递归到4</p>
+<p>step9： 删边 4→5 递归到5</p>
+<p>step10： 删边5→6 递归到6</p>
+<p>step11： 删边 6→3 递归到3</p>
+<p>step12： 3加入队列，返回</p>
+<p>step13： 6加入队列，返回</p>
+<p>step14： 5加入队列，返回</p>
+<p>step15： 4加入队列，返回</p>
+<p>step16： 3加入队列，返回</p>
+<p>step17： 2加入队列，返回</p>
+<p>step18： 1加入队列，返回</p>
+<p>答案队列为：1 7 3 6 5 4 3 2 1。反向输出即为答案。</p>
+<p>有向图除判断是否存在有一点点不同以外同理。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/18/%E7%BC%A9%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          缩点
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/17/%E6%9C%80%E5%A4%A7%E6%B5%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">最大流</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 haifenggo
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
