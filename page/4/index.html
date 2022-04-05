@@ -152,6 +152,80 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-最小生成树" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/12/19/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="article-date">
+  	<time datetime="2021-12-19T08:29:38.000Z" itemprop="datePublished">2021-12-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/19/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
+        最小生成树
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 链式前向星版prim</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#define inf 123456789</span><br><span class="line">#define maxn 5005</span><br><span class="line">#define maxm 200005</span><br><span class="line">using namespace std;</span><br><span class="line">struct edge &#123;</span><br><span class="line">	int v, w, next;</span><br><span class="line">&#125;e[maxm&lt;&lt;1];</span><br><span class="line">int head[maxn], dis[maxn], cnt, n, m, tot, now = 1, ans;</span><br><span class="line">//已经加入最小生成树的的点到没有加入的点的最短距离，比如说1和2号节点已经加入了最小生成树，那么dis[3]就等于min(1-&gt;3,2-&gt;3)</span><br><span class="line"></span><br><span class="line">bool  vis[maxn];</span><br><span class="line">void add(int u, int v, int w) &#123;</span><br><span class="line">	e[++cnt].v = v;</span><br><span class="line">	e[cnt].w = w;</span><br><span class="line">	e[cnt].next = head[u];</span><br><span class="line">	head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line">void init() &#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	for (int i = 1, u, v, w;i &lt;= m;i++) &#123;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">		add(u, v, w), add(v, u, w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int prim() &#123;</span><br><span class="line">	for (int i = 2;i &lt;= n;i++)</span><br><span class="line">		dis[i] = inf;</span><br><span class="line">	for (int i = head[1];i;i = e[i].next)//这里要注意重边，所以要用到min</span><br><span class="line">		dis[e[i].v] = min(dis[e[i].v], e[i].w);</span><br><span class="line">	while (++tot &lt; n) &#123;</span><br><span class="line">		int minn = inf;</span><br><span class="line">		vis[now] = 1;</span><br><span class="line">		//标记点已经走过</span><br><span class="line">        //枚举每一个没有使用过的点</span><br><span class="line">        //找出最小值作为新边</span><br><span class="line">        //注意这里不是枚举now点的所有连边，而是1~n</span><br><span class="line">		for (int i = 1;i &lt;= n;i++)</span><br><span class="line">			if (!vis[i] &amp;&amp; minn &gt; dis[i])</span><br><span class="line">				minn = dis[i], now = i;</span><br><span class="line">		ans += minn;</span><br><span class="line">		for (int i = head[now];i;i = e[i].next) &#123;</span><br><span class="line">			int v = e[i].v;</span><br><span class="line">			if (dis[v] &gt; e[i].w &amp;&amp; !vis[v])</span><br><span class="line">				dis[v] = e[i].w;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	init();</span><br><span class="line">	cout &lt;&lt; prim();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>邻接矩阵版prim</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">struct Edge &#123;</span><br><span class="line">	int begin;</span><br><span class="line">	int end;</span><br><span class="line">	int weight;</span><br><span class="line">&#125;mst[N];</span><br><span class="line">void Prim(Graph* g, Edge* mst, int v) &#123;</span><br><span class="line">	int MaxValue = 100000;</span><br><span class="line">	int i, j, k, min, m, t, w;</span><br><span class="line">	Edge temp;</span><br><span class="line">	for(i=0;i&lt;g-&gt;vCnt;i++)//边集数组mst初始化</span><br><span class="line">		if (i &lt; v) &#123;</span><br><span class="line">			mst[i].begin = v;</span><br><span class="line">			mst[i].end = i;</span><br><span class="line">			mst[i].weight = g-&gt;adjMatrix[v][i];</span><br><span class="line">		&#125;</span><br><span class="line">		else if (i &gt; v) &#123;</span><br><span class="line">			mst[i-1].begin = v;</span><br><span class="line">			mst[i-1].end = i;</span><br><span class="line">			mst[i-1].weight = g-&gt;adjMatrix[v][i];</span><br><span class="line">		&#125;</span><br><span class="line">	for (k = 0;k &lt; g-&gt;vCnt-1;k++) &#123;//求出mst的n-1条边</span><br><span class="line">		min = MaxValue;</span><br><span class="line">		m = k;</span><br><span class="line">		//U为生成树集合，V为剩余顶点集合</span><br><span class="line">		for (j = k;j &lt; g-&gt;vCnt;j++)//找到从U到V的最短边</span><br><span class="line">			if (mst[j].weight &lt; min)</span><br><span class="line">				min = mst[j].weight, m = j;</span><br><span class="line"></span><br><span class="line">		temp = mst[k];//把最短边交换到mst[k]的位置，此时需要重载</span><br><span class="line">		mst[k] = mst[m];</span><br><span class="line">		mst[m] = temp;</span><br><span class="line"></span><br><span class="line">		j = mst[k].end;//用于刚进入U的顶点</span><br><span class="line">		for (i = k + 1;i &lt; g-&gt;vCnt - 1;i++) &#123;//检查并修改V中更顶点到U的最短边</span><br><span class="line">			t = mst[i].end;</span><br><span class="line">			w = g-&gt;adjMatrix[j][t];</span><br><span class="line">			if (w &lt; mst[i].weight)</span><br><span class="line">				mst[i].weight = w, mst[i].begin = j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无邻接矩阵版kruskal</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#define N 5000</span><br><span class="line">using namespace std;</span><br><span class="line">int fa[N];</span><br><span class="line">int n, m, i, j, u, v, total,ans;</span><br><span class="line">struct edge &#123;</span><br><span class="line">	int start;</span><br><span class="line">	int to;</span><br><span class="line">	int val;</span><br><span class="line">&#125;bian[N&lt;&lt;1];</span><br><span class="line">int find(int x) &#123;</span><br><span class="line">	if (fa[x] == x)return x;</span><br><span class="line">	return fa[x] = find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line">bool cmp(edge a, edge b) &#123;</span><br><span class="line">	return a.val &lt; b.val;</span><br><span class="line">&#125;</span><br><span class="line">void kruskal(int n,int m) &#123;</span><br><span class="line">	for (i = 1;i &lt;= n;i++)fa[i] = i;</span><br><span class="line">	for (j = 1;j &lt;= m;j++)cin &gt;&gt; bian[j].start &gt;&gt; bian[j].to &gt;&gt; bian[j].val;</span><br><span class="line">	sort(bian + 1, bian + 1 + m, cmp);//快排</span><br><span class="line">	for (int i = 1;i &lt;= m;i++) &#123;</span><br><span class="line">		u = find(bian[i].start);</span><br><span class="line">		v = find(bian[i].to);</span><br><span class="line">		if (u == v)continue;//同祖先就跳过该边</span><br><span class="line">		ans += bian[i].val;</span><br><span class="line">		fa[u] = v;//更新祖先</span><br><span class="line">		total++;</span><br><span class="line">		if (total == n - 1)break;//n-1条边，最小生成树已经形成</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	kruskal(n, m);</span><br><span class="line">	cout &lt;&lt; ans;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>邻接矩阵版kruskal</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">void kruskal(Graph* g,Edge* mst) &#123;</span><br><span class="line">	int i, j, eCount, k, NUM = 0, edgeNum = 0, n1 = 0, n2 = 0;</span><br><span class="line">	int** set;</span><br><span class="line">	Edge* edges, tmp;</span><br><span class="line"></span><br><span class="line">	eCount = getECount(g);//求出边数</span><br><span class="line">	edges = (Edge*)malloc(sizeof(Edge) * eCount);//创建边的数组集合，包括每条边的起始端点，末端点和边的权重</span><br><span class="line"></span><br><span class="line">	//创建二维数组set，为顶点连通集合</span><br><span class="line">	set = (int**)malloc(sizeof(int*) * g-&gt;vCnt);</span><br><span class="line">	for (i = 0;i &lt; g-&gt;vCnt;i++)</span><br><span class="line">		set[i] = (int*)malloc(sizeof(int) * g-&gt;vCnt);</span><br><span class="line"></span><br><span class="line">	//此处是插入法对边集合按照边的权重从小到大排序</span><br><span class="line">	for (i = 0;i &lt; g-&gt;vCnt;i++) &#123;</span><br><span class="line">		for (j = 0;j &lt; i;j++) &#123;</span><br><span class="line">			if (g-&gt;adjMatrix[i][j] &lt;= 0)</span><br><span class="line">				continue;</span><br><span class="line">			tmp.begin = i;</span><br><span class="line">			tmp.end = j;</span><br><span class="line">			tmp.weight = g-&gt;adjMatrix[i][j];</span><br><span class="line">			for (k = NUM - 1;k &gt;= 0;k--) &#123;</span><br><span class="line">				if (edges[k].weight &gt; tmp.weight)</span><br><span class="line">					edges[k + 1] = edges[k];</span><br><span class="line">				else</span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">			edges[k + 1] = tmp;</span><br><span class="line">			NUM++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//初始化顶点集合，刚开始时有多少个顶点就有多少个连通集合，代表所有的点都还没有开始连通</span><br><span class="line">	for(i=0;i &lt; g-&gt;vCnt;i++)//set的每行i代表一个顶点</span><br><span class="line">		for (j = 0;j &lt; g-&gt;vCnt;j++) &#123;//即对于每个顶点，他对其他顶点的连通情况如何</span><br><span class="line">			if (i == j)//对于一个相同顶点，自己和自己连通嘛</span><br><span class="line">				set[i][j] = 1;</span><br><span class="line">			else</span><br><span class="line">				set[i][j] = 0;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	k = 0;</span><br><span class="line">	while (k &lt; g-&gt;vCnt-1) &#123;//k为已加入最小生成树的边数，只需加n-1条即可哦</span><br><span class="line">		//这两个for循环是对于set集合而言的，用来判断连通情况</span><br><span class="line">		for(i = 0;i &lt; g-&gt;vCnt;i++)</span><br><span class="line">			for (j = 0;j &lt; g-&gt;vCnt;j++) &#123;</span><br><span class="line">				//反向思维排除法</span><br><span class="line">				//对于当前边edgeNum</span><br><span class="line">				if (edges[edgeNum].begin == j &amp;&amp; set[i][j] == 1)</span><br><span class="line">					//对于begin端点，他总会是一个顶点j，他与顶点i连通时，n1=i；</span><br><span class="line">					n1 = i;</span><br><span class="line">				if (edges[edgeNum].end == j &amp;&amp; set[i][j] == 1)</span><br><span class="line">					n2 = i;</span><br><span class="line">				//如果在同一个i不同j的情况下确定n1，n2，则他们在同一连通集合，说明会构成回路</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		if (n1 != n2) &#123;//edgeNum边的两端点不连通情况</span><br><span class="line">			mst[k] = edges[edgeNum];k++;//加入最小生成树集合</span><br><span class="line"></span><br><span class="line">			for (j = 0;j &lt; g-&gt;vCnt;j++) &#123;//合并edgeNum新边的两个端点的连通集合</span><br><span class="line">				set[n1][j] = (set[n1][j] + set[n2][j]) % 2;</span><br><span class="line">				set[n2][j] = 0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		edgeNum++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-图" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -812,78 +886,6 @@
 <p><strong>欧拉筛</strong></p>
 <p>欧拉筛法的基本思想 ：在埃氏筛法的基础上，让每个合数只被它的最小质因子筛选一次，以达到不重复的目的。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int prime[MAXN];</span><br><span class="line">bool vis[MAXN];</span><br><span class="line">int cnt;</span><br><span class="line">void Euler_prime(int n)</span><br><span class="line">&#123;</span><br><span class="line">    for (int i = 2;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if (!vis[i])</span><br><span class="line">            prime[cnt++] = i;</span><br><span class="line">        for (int j = 0;j &lt; cnt;j++)//对于每个素数</span><br><span class="line">        &#123;</span><br><span class="line">            if (i * prime[j] &gt; n)break;//当前这个数和前面任意素数的乘积不在n范围内，更大的素数乘积更大，故break</span><br><span class="line">            vis[i * prime[j]] = true;//筛去当前这个数和前面任意素数的乘积</span><br><span class="line">            if (i % prime[j] == 0)break;//当前数是前面素数的倍数，已经有公因子了，不用再筛</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-快速幂" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/11/08/%E5%BF%AB%E9%80%9F%E5%B9%82/" class="article-date">
-  	<time datetime="2021-11-08T13:10:05.000Z" itemprop="datePublished">2021-11-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/08/%E5%BF%AB%E9%80%9F%E5%B9%82/">
-        快速幂
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">递归快速幂</span><br><span class="line">		//泛型的快速幂</span><br><span class="line">		template &lt;typename T&gt;只要a的数据类型支持乘法且满足结合律</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int qpow(int a, int n)</span><br><span class="line">&#123;</span><br><span class="line">	if (n == 0) return 1;</span><br><span class="line">	else if (n % 2 == 1)</span><br><span class="line">		return qpow(a, n - 1 * a);</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		int tmp = qpow(a, n / 2);</span><br><span class="line">		return tmp * tmp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">注意，这个temp变量是必要的，</span><br><span class="line">因为如果不把[公式]记录下来，直接写成qpow(a, n /2)*qpow(a, n /2)，</span><br><span class="line">那会计算两次[公式]，</span><br><span class="line">整个算法就退化为了 [公式] 。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">非递归快速幂</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int qpow(int a, int n)</span><br><span class="line">&#123;</span><br><span class="line">	int ans = 1;</span><br><span class="line">	while (n)</span><br><span class="line">	&#123;</span><br><span class="line">		if (n &amp; 1) //如果n的当前末位为1</span><br><span class="line">			ans *= a;</span><br><span class="line">		a *= a;</span><br><span class="line">		n &gt;&gt;= 1;//n往右移一位</span><br><span class="line">	&#125;</span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//递归快速幂（对大素数取模）</span><br><span class="line">#define MOD 1000000007</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll qpow(ll a, ll n)</span><br><span class="line">&#123;</span><br><span class="line">    if (n == 0)</span><br><span class="line">        return 1;</span><br><span class="line">    else if (n % 2 == 1)</span><br><span class="line">        return qpow(a, n - 1) * a % MOD;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        ll temp = qpow(a, n / 2) % MOD;</span><br><span class="line">        return temp * temp % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
