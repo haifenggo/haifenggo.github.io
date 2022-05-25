@@ -152,6 +152,78 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-最小表示法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/31/%E6%9C%80%E5%B0%8F%E8%A1%A8%E7%A4%BA%E6%B3%95/" class="article-date">
+  	<time datetime="2022-03-31T11:17:46.000Z" itemprop="datePublished">2022-03-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/31/%E6%9C%80%E5%B0%8F%E8%A1%A8%E7%A4%BA%E6%B3%95/">
+        最小表示法
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最小表示法：</p>
+<p>首先把串复制一遍贴在原串后面，这样每个循环同构的串可以用S[i]~S[i+n-1]来表示，设为w(i)。</p>
+<p>也就是说我们把所有的串拿出来了，比较就行了。</p>
+<p>在比较w(i)和w(j)时的最坏时间复杂度是O(n)的，也就是说这只是一个暴力的做法。</p>
+<p>实际上我们不需要对所有的w(i)都进行一次比较。</p>
+<p>假设比较w(i)和w(j)时比较了k个字符，直到k+1个字符不同。</p>
+<p>那么我们将字典序大的那边指针向后跳k+1即可，因为已经知道有比这些串小的串了(就在另一个指针的后面)</p>
+<p>相当于每个指针最多向后跳n次，复杂度就变成O(n)的了，非常好写。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> a[N];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">1</span>, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; n &amp;&amp; j &lt; n &amp;&amp; k &lt; n) &#123;</span><br><span class="line">        <span class="keyword">int</span> ik = (i + k) % n;</span><br><span class="line">        <span class="keyword">int</span> jk = (j + k) % n;</span><br><span class="line">        <span class="keyword">if</span> (a[ik] == a[jk])k++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (a[ik] &gt; a[jk]) &#123;</span><br><span class="line">            i = i + k + <span class="number">1</span>;</span><br><span class="line">            k = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (i == j)i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123; </span><br><span class="line">            j = j + k + <span class="number">1</span>;</span><br><span class="line">            k = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (i == j)j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    i = <span class="built_in">min</span>(i, j);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= n;j++) &#123;</span><br><span class="line">        cout &lt;&lt; a[i++ % n] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-差分约束" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -723,70 +795,6 @@
 <p>首先，我们将与 f[n]<em>f</em>[<em>n</em>] 有关的需要得到的式子放入一个矩阵: \begin{bmatrix}f[n]\f[n - 1]\f[n - 2]\end{bmatrix}f*[<em>n</em>]<em>f</em>[<em>n</em>−1]<em>f</em>[<em>n</em>−2]</p>
 <p>然后，我们寻找他从哪里来: f[n-1] = f[n - 2] + f[n - 3]<em>f</em>[<em>n</em>−1]=<em>f</em>[<em>n</em>−2]+<em>f</em>[<em>n</em>−3]， 即 \begin{bmatrix}f[n-1]\f[n - 2]\f[n - 3]\end{bmatrix}f*[<em>n</em>−1]<em>f</em>[<em>n</em>−2]<em>f</em>[<em>n</em>−3]</p>
 <p>然后设我们需要得到的矩阵为ans<em>a<strong>n</strong>s</em>，有:ans<em>\begin{bmatrix}f[n-1]\f[n - 2]\f[n - 3]\end{bmatrix} = \begin{bmatrix}f[n]\f[n - 1]\f[n - 2]\end{bmatrix}<em>a<strong>n</strong>s</em>∗f</em>[<em>n</em>−1]<em>f</em>[<em>n</em>−2]<em>f</em>[<em>n</em>−3]=f*[<em>n</em>]<em>f</em>[<em>n</em>−1]<em>f</em>[<em>n</em>−2]</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-矩阵快速幂" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/03/26/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/" class="article-date">
-  	<time datetime="2022-03-26T09:10:11.000Z" itemprop="datePublished">2022-03-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/26/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/">
-        矩阵快速幂
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">ll n, k, m;</span><br><span class="line">struct Matrix &#123;</span><br><span class="line">    ll c[101][101];</span><br><span class="line">&#125;A,I;</span><br><span class="line">Matrix operator*(const Matrix&amp; x,const Matrix&amp; y) &#123;</span><br><span class="line">    Matrix a;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        for (int j = 1;j &lt;= n;j++) &#123;</span><br><span class="line">            a.c[i][j] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //矩阵乘法</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        for (int j = 1;j &lt;= n;j++) &#123;</span><br><span class="line">            for (int k = 1;k &lt;= n;k++) &#123;</span><br><span class="line">                a.c[i][j] += x.c[i][k] * y.c[k][j] ;//计算第i行j列</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        for (int j = 1;j &lt;= n;j++) &#123;</span><br><span class="line">            cin &gt;&gt; A.c[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) I.c[i][i] = 1;//单位矩阵</span><br><span class="line">    //快速幂</span><br><span class="line">    while (k &gt; 0) &#123;</span><br><span class="line">        if (k % 2 == 1)I = I * A;</span><br><span class="line">        A = A * A;</span><br><span class="line">        k = k &gt;&gt; 1;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        for (int j = 1;j &lt;= n;j++) &#123;</span><br><span class="line">            cout &lt;&lt; I.c[i][j] &lt;&lt; &#x27; &#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
