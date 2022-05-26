@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>舞蹈链 | Hello Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="j 精确覆盖问题 步骤1、从矩阵中选择一行 2、根据定义，标示矩阵中其他行的元素 3、删除相关行和列的元素，得到新矩阵 4、如果新矩阵是空矩阵，并且之前的一行都是1，那么求解结束，跳转到6；新矩阵不是空矩阵，继续求解，跳转到1；新矩阵是空矩阵，之前的一行中有0，跳转到5 5、说明之前的选择有误，回溯到之前的一个矩阵，跳转到1；如果没有矩阵可以回溯，说明该问题无解，跳转到7 6、求解结束，把结果输出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="舞蹈链">
+<meta property="og:url" content="http://example.com/2022/05/26/%E8%88%9E%E8%B9%88%E9%93%BE/index.html">
+<meta property="og:site_name" content="Hello Blog">
+<meta property="og:description" content="j 精确覆盖问题 步骤1、从矩阵中选择一行 2、根据定义，标示矩阵中其他行的元素 3、删除相关行和列的元素，得到新矩阵 4、如果新矩阵是空矩阵，并且之前的一行都是1，那么求解结束，跳转到6；新矩阵不是空矩阵，继续求解，跳转到1；新矩阵是空矩阵，之前的一行中有0，跳转到5 5、说明之前的选择有误，回溯到之前的一个矩阵，跳转到1；如果没有矩阵可以回溯，说明该问题无解，跳转到7 6、求解结束，把结果输出">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-26T06:32:43.000Z">
+<meta property="article:modified_time" content="2022-05-26T07:39:28.666Z">
+<meta property="article:author" content="haifenggo">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Hello Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">haifenggo</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/categories">Categories</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15.71px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14.29px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 17.14px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 11.43px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 18.57px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%A0%91/" style="font-size: 10px;">树</a> <a href="/tags/%E6%A0%91%E4%B8%8A%E7%AE%97%E6%B3%95/" style="font-size: 10px;">树上算法</a> <a href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树形结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.86px;">算法</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m haifenggo.more information in my wechat.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/categories">Categories</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-舞蹈链" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/05/26/%E8%88%9E%E8%B9%88%E9%93%BE/" class="article-date">
+  	<time datetime="2022-05-26T06:32:43.000Z" itemprop="datePublished">2022-05-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      舞蹈链
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>j</p>
+<p>精确覆盖问题</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>1、从矩阵中选择一行</p>
+<p>2、根据定义，标示矩阵中其他行的元素</p>
+<p>3、删除相关行和列的元素，得到新矩阵</p>
+<p>4、如果新矩阵是空矩阵，并且之前的一行都是1，那么求解结束，跳转到6；新矩阵不是空矩阵，继续求解，跳转到1；新矩阵是空矩阵，之前的一行中有0，跳转到5</p>
+<p>5、说明之前的选择有误，回溯到之前的一个矩阵，跳转到1；如果没有矩阵可以回溯，说明该问题无解，跳转到7</p>
+<p>6、求解结束，把结果输出</p>
+<p>7、求解结束，输出无解消息</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, m, k, t;</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">int</span> l[N], r[N], u[N], d[N], col[N], row[N];</span><br><span class="line"><span class="keyword">int</span> h[N];<span class="comment">// 每行的头节点</span></span><br><span class="line"><span class="keyword">int</span> s[N];<span class="comment">// 每列的节点数</span></span><br><span class="line"><span class="keyword">int</span> ans[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt;= m;i++) &#123;</span><br><span class="line">        r[i] = i + <span class="number">1</span>;</span><br><span class="line">        l[i] = i - <span class="number">1</span>;</span><br><span class="line">        u[i] = d[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    r[m] = <span class="number">0</span>;</span><br><span class="line">    l[<span class="number">0</span>] = m;</span><br><span class="line">    <span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">    <span class="built_in">memset</span>(s, <span class="number">0</span>, <span class="keyword">sizeof</span> s);</span><br><span class="line">    cnt = m + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> R, <span class="keyword">int</span> C)</span> </span>&#123;<span class="comment">// 插入点</span></span><br><span class="line">    s[C]++;<span class="comment">// 节点数++</span></span><br><span class="line">    row[cnt] = R;</span><br><span class="line">    col[cnt] = C;</span><br><span class="line">    u[cnt] = C;</span><br><span class="line">    d[cnt] = d[C];</span><br><span class="line">    u[d[C]] = cnt;</span><br><span class="line">    d[C] = cnt;</span><br><span class="line">    <span class="keyword">if</span> (h[R] == <span class="number">-1</span>)h[R] = r[cnt] = l[cnt] = cnt;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        r[cnt] = h[R];</span><br><span class="line">        l[cnt] = l[h[R]];</span><br><span class="line">        r[l[h[R]]] = cnt;</span><br><span class="line">        l[h[R]] = cnt;</span><br><span class="line">    &#125;</span><br><span class="line">    cnt++;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> C)</span> </span>&#123;<span class="comment">// 删除涉及C列的集合</span></span><br><span class="line">    r[l[C]] = r[C];</span><br><span class="line">    l[r[C]] = l[C];<span class="comment">// 左右孤立C</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = d[C];i != C;i = d[i]) &#123;<span class="comment">// 从C向下遍历每个点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = r[i];j != i;j = r[j]) &#123;<span class="comment">// 向右遍历每个点</span></span><br><span class="line">            u[d[j]] = u[j];</span><br><span class="line">            d[u[j]] = d[j];<span class="comment">// 上下孤立j</span></span><br><span class="line">            s[col[j]]--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="comment">// 断裂每行之间的关系</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">resume</span><span class="params">(<span class="keyword">int</span> C)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = u[C];i != C;i = u[i]) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = l[i];j != i;j = l[j]) &#123;</span><br><span class="line">            u[d[j]] = j;</span><br><span class="line">            d[u[j]] = j;</span><br><span class="line">            s[col[j]]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    r[l[C]] = C;</span><br><span class="line">    l[r[C]] = C;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dance</span><span class="params">(<span class="keyword">int</span> deep)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (r[<span class="number">0</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>;i &lt; deep;i++) &#123;</span><br><span class="line">            cout &lt;&lt; ans[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> c = r[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = r[<span class="number">0</span>];i != <span class="number">0</span>;i = r[i]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] &lt; s[c])c = i;</span><br><span class="line">    &#125;<span class="comment">// 选列节点数最多的</span></span><br><span class="line">    <span class="built_in">remove</span>(c);</span><br><span class="line">    <span class="keyword">for</span> (i = d[c];i != c;i = d[i]) &#123;</span><br><span class="line">        ans[deep] = row[i];</span><br><span class="line">        <span class="keyword">for</span> (j = r[i];j != i;j = r[j]) &#123;</span><br><span class="line">            <span class="built_in">remove</span>(col[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">dance</span>(deep + <span class="number">1</span>))<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (j = l[i];j != i;j = l[j]) &#123;</span><br><span class="line">            <span class="built_in">resume</span>(col[j]);</span><br><span class="line">        &#125;<span class="comment">// 回溯</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">resume</span>(c);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">int</span> f;</span><br><span class="line">    <span class="built_in">init</span>(m);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>;i &lt;= n;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span>;j &lt;= m;j++) &#123;</span><br><span class="line">            cin &gt;&gt; f;</span><br><span class="line">            <span class="keyword">if</span> (f)<span class="built_in">link</span>(i, j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">dance</span>(<span class="number">0</span>))cout &lt;&lt; <span class="string">&quot;No Solution!&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/05/25/A_star/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">A_star</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 haifenggo
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
