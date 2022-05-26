@@ -152,75 +152,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-矩阵加速" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/03/26/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" class="article-date">
-  	<time datetime="2022-03-26T09:10:23.000Z" itemprop="datePublished">2022-03-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/26/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/">
-        矩阵加速
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>让我们观察一下这题的递推式:</p>
-<p>f[1] = f[2] = f[3] = 1<em>f</em>[1]=<em>f</em>[2]=<em>f</em>[3]=1</p>
-<p>f[n] = f[n - 1] + f[n - 3]<em>f</em>[<em>n</em>]=<em>f</em>[<em>n</em>−1]+<em>f</em>[<em>n</em>−3] (n &gt; 3<em>n</em>&gt;3)</p>
-<p>首先我们可以发现，f[n]<em>f</em>[<em>n</em>] 最早由f[n-3]<em>f</em>[<em>n</em>−3]转移而来，所以我们需要构造一个3*33∗3的矩阵。</p>
-<p>首先，我们将与 f[n]<em>f</em>[<em>n</em>] 有关的需要得到的式子放入一个矩阵: \begin{bmatrix}f[n]\f[n - 1]\f[n - 2]\end{bmatrix}f*[<em>n</em>]<em>f</em>[<em>n</em>−1]<em>f</em>[<em>n</em>−2]</p>
-<p>然后，我们寻找他从哪里来: f[n-1] = f[n - 2] + f[n - 3]<em>f</em>[<em>n</em>−1]=<em>f</em>[<em>n</em>−2]+<em>f</em>[<em>n</em>−3]， 即 \begin{bmatrix}f[n-1]\f[n - 2]\f[n - 3]\end{bmatrix}f*[<em>n</em>−1]<em>f</em>[<em>n</em>−2]<em>f</em>[<em>n</em>−3]</p>
-<p>然后设我们需要得到的矩阵为ans<em>a<strong>n</strong>s</em>，有:ans<em>\begin{bmatrix}f[n-1]\f[n - 2]\f[n - 3]\end{bmatrix} = \begin{bmatrix}f[n]\f[n - 1]\f[n - 2]\end{bmatrix}<em>a<strong>n</strong>s</em>∗f</em>[<em>n</em>−1]<em>f</em>[<em>n</em>−2]<em>f</em>[<em>n</em>−3]=f*[<em>n</em>]<em>f</em>[<em>n</em>−1]<em>f</em>[<em>n</em>−2]</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-矩阵快速幂" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -816,6 +747,83 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/%E5%9B%BE/">图</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-乘法逆元" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/01/15/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" class="article-date">
+  	<time datetime="2022-01-15T12:10:19.000Z" itemprop="datePublished">2022-01-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/15/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">
+        乘法逆元
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　若在mod p意义下，对于一个整数a，有a*b≡1(mod p)，那么这个整数b即为a的 乘法逆元，同时a也为b的乘法逆元</p>
+<p>​    一个数有逆元的充分必要条件是gcd(a,p)=1，此时a才有对p的乘法逆元</p>
+<p>乘法逆元的作用就是：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/378728642">乘法逆元</a></p>
+<p>设 <img src="https://www.zhihu.com/equation?tex=m" alt="[公式]"> 是一个很大的数，<img src="https://www.zhihu.com/equation?tex=a" alt="[公式]">、<img src="https://www.zhihu.com/equation?tex=b" alt="[公式]">已知，预期要计算（假设答案为 <img src="https://www.zhihu.com/equation?tex=c" alt="[公式]">）：</p>
+<p><img src="https://www.zhihu.com/equation?tex=m+/+a+%5Cbmod+b%5C%5C" alt="[公式]"></p>
+<p>对于 <img src="https://www.zhihu.com/equation?tex=a" alt="[公式]"> 的逆元 <img src="https://www.zhihu.com/equation?tex=d" alt="[公式]">，能够满足</p>
+<p><img src="https://www.zhihu.com/equation?tex=m+%5Ccdot+d+%5Cbmod+b+=+m+/+a+%5Cbmod+b+=+c%5C%5C" alt="[公式]"></p>
+<p>在有些问题中，无法计算最终值很大的 <img src="https://www.zhihu.com/equation?tex=m" alt="[公式]"> ，只能得到基于同余的一个中间值 <img src="https://www.zhihu.com/equation?tex=m+%5Cbmod+b+=+e" alt="[公式]"> 来计算 <img src="https://www.zhihu.com/equation?tex=e+/+a+%5Cbmod+b" alt="[公式]"> ，而 <img src="https://www.zhihu.com/equation?tex=e" alt="[公式]"> 可能无法整除 <img src="https://www.zhihu.com/equation?tex=a" alt="[公式]">，就可以用 <img src="https://www.zhihu.com/equation?tex=a" alt="[公式]"> 的逆元 <img src="https://www.zhihu.com/equation?tex=d" alt="[公式]">，来计算 <img src="https://www.zhihu.com/equation?tex=e+%5Ccdot+d+%5Cbmod+b" alt="[公式]">。</p>
+<p>故而我们需要一个算法求 <strong>除数</strong> 的 <strong>取模逆元</strong> ，从而在四则运算取模的任务中，用逆元将除法转为乘法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">费马小定理：</span><br><span class="line">long long PowMod(long long a,int b) &#123;</span><br><span class="line">	long long ret=1;</span><br><span class="line">	while(b) &#123;</span><br><span class="line">		if(b&amp;1)ret=ret*a%Mod;</span><br><span class="line">		a=a*a%Mod;</span><br><span class="line">		b&gt;&gt;=1;</span><br><span class="line">	&#125;</span><br><span class="line">	return ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">扩展欧几里得算法：</span><br><span class="line">long long extend_gcd(long long a,long long b,long long &amp;x,long long &amp;y) &#123;</span><br><span class="line">	if(a==0&amp;&amp;b==0)</span><br><span class="line">		return -1ll;</span><br><span class="line">	if(b==0)</span><br><span class="line">	&#123;</span><br><span class="line">		x=1ll;</span><br><span class="line">		y=0ll;</span><br><span class="line">		return a;</span><br><span class="line">	&#125;</span><br><span class="line">	long long d=extend_gcd(b,a%b,y,x);</span><br><span class="line">	y-=a/b*x;</span><br><span class="line">	return d;</span><br><span class="line">&#125;</span><br><span class="line">long long mod_reverse(long long a,long long n) &#123;</span><br><span class="line">    long long x,y,d=extend_gcd(a,n,x,y);</span><br><span class="line">    if(d==1) &#123;</span><br><span class="line">	    if(x%n&lt;=0)return x%n+n;</span><br><span class="line">		else return x%n;</span><br><span class="line">	&#125; else return -1ll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">递推计算阶乘的逆元：</span><br><span class="line">f[0]=1;</span><br><span class="line">for(int i=1;i&lt;=N;i++)</span><br><span class="line">	f[i]=f[i-1]*i%Mod;</span><br><span class="line">inv[0]=1;</span><br><span class="line">inv[N]=PowMod(f[N],Mod-2);</span><br><span class="line">for(int i=N-1;i&gt;0;i--)</span><br><span class="line">	inv[i]=inv[i+1]*(i+1)%Mod;</span><br><span class="line">	</span><br><span class="line">递推计算连续的数的逆元：</span><br><span class="line">inv[1]=1;</span><br><span class="line">for(int i=2;i&lt;=N;i++)</span><br><span class="line">	inv[i]=(Mod-Mod/i)*inv[Mod%i]%Mod;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
 	</div>
 
 
