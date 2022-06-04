@@ -88,7 +88,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15.71px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14.29px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 17.14px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 11.43px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 18.57px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%A0%91/" style="font-size: 10px;">树</a> <a href="/tags/%E6%A0%91%E4%B8%8A%E7%AE%97%E6%B3%95/" style="font-size: 10px;">树上算法</a> <a href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树形结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.86px;">算法</a>
+						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 14.29px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 14.29px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 15.71px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 17.14px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 11.43px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 18.57px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%A0%91/" style="font-size: 10px;">树</a> <a href="/tags/%E6%A0%91%E4%B8%8A%E7%AE%97%E6%B3%95/" style="font-size: 10px;">树上算法</a> <a href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树形结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.86px;">算法</a>
 					</div>
 				</section>
 				
@@ -151,6 +151,304 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-最小生成树" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/12/19/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="article-date">
+  	<time datetime="2021-12-19T08:29:38.000Z" itemprop="datePublished">2021-12-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/19/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
+        最小生成树
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 链式前向星版prim</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#define inf 123456789</span><br><span class="line">#define maxn 5005</span><br><span class="line">#define maxm 200005</span><br><span class="line">using namespace std;</span><br><span class="line">struct edge &#123;</span><br><span class="line">	int v, w, next;</span><br><span class="line">&#125;e[maxm&lt;&lt;1];</span><br><span class="line">int head[maxn], dis[maxn], cnt, n, m, tot, now = 1, ans;</span><br><span class="line">//已经加入最小生成树的的点到没有加入的点的最短距离，比如说1和2号节点已经加入了最小生成树，那么dis[3]就等于min(1-&gt;3,2-&gt;3)</span><br><span class="line"></span><br><span class="line">bool  vis[maxn];</span><br><span class="line">void add(int u, int v, int w) &#123;</span><br><span class="line">	e[++cnt].v = v;</span><br><span class="line">	e[cnt].w = w;</span><br><span class="line">	e[cnt].next = head[u];</span><br><span class="line">	head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line">void init() &#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	for (int i = 1, u, v, w;i &lt;= m;i++) &#123;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">		add(u, v, w), add(v, u, w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int prim() &#123;</span><br><span class="line">	for (int i = 2;i &lt;= n;i++)</span><br><span class="line">		dis[i] = inf;</span><br><span class="line">	for (int i = head[1];i;i = e[i].next)//这里要注意重边，所以要用到min</span><br><span class="line">		dis[e[i].v] = min(dis[e[i].v], e[i].w);</span><br><span class="line">	while (++tot &lt; n) &#123;</span><br><span class="line">		int minn = inf;</span><br><span class="line">		vis[now] = 1;</span><br><span class="line">		//标记点已经走过</span><br><span class="line">        //枚举每一个没有使用过的点</span><br><span class="line">        //找出最小值作为新边</span><br><span class="line">        //注意这里不是枚举now点的所有连边，而是1~n</span><br><span class="line">		for (int i = 1;i &lt;= n;i++)</span><br><span class="line">			if (!vis[i] &amp;&amp; minn &gt; dis[i])</span><br><span class="line">				minn = dis[i], now = i;</span><br><span class="line">		ans += minn;</span><br><span class="line">		for (int i = head[now];i;i = e[i].next) &#123;</span><br><span class="line">			int v = e[i].v;</span><br><span class="line">			if (dis[v] &gt; e[i].w &amp;&amp; !vis[v])</span><br><span class="line">				dis[v] = e[i].w;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	init();</span><br><span class="line">	cout &lt;&lt; prim();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>邻接矩阵版prim</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">struct Edge &#123;</span><br><span class="line">	int begin;</span><br><span class="line">	int end;</span><br><span class="line">	int weight;</span><br><span class="line">&#125;mst[N];</span><br><span class="line">void Prim(Graph* g, Edge* mst, int v) &#123;</span><br><span class="line">	int MaxValue = 100000;</span><br><span class="line">	int i, j, k, min, m, t, w;</span><br><span class="line">	Edge temp;</span><br><span class="line">	for(i=0;i&lt;g-&gt;vCnt;i++)//边集数组mst初始化</span><br><span class="line">		if (i &lt; v) &#123;</span><br><span class="line">			mst[i].begin = v;</span><br><span class="line">			mst[i].end = i;</span><br><span class="line">			mst[i].weight = g-&gt;adjMatrix[v][i];</span><br><span class="line">		&#125;</span><br><span class="line">		else if (i &gt; v) &#123;</span><br><span class="line">			mst[i-1].begin = v;</span><br><span class="line">			mst[i-1].end = i;</span><br><span class="line">			mst[i-1].weight = g-&gt;adjMatrix[v][i];</span><br><span class="line">		&#125;</span><br><span class="line">	for (k = 0;k &lt; g-&gt;vCnt-1;k++) &#123;//求出mst的n-1条边</span><br><span class="line">		min = MaxValue;</span><br><span class="line">		m = k;</span><br><span class="line">		//U为生成树集合，V为剩余顶点集合</span><br><span class="line">		for (j = k;j &lt; g-&gt;vCnt;j++)//找到从U到V的最短边</span><br><span class="line">			if (mst[j].weight &lt; min)</span><br><span class="line">				min = mst[j].weight, m = j;</span><br><span class="line"></span><br><span class="line">		temp = mst[k];//把最短边交换到mst[k]的位置，此时需要重载</span><br><span class="line">		mst[k] = mst[m];</span><br><span class="line">		mst[m] = temp;</span><br><span class="line"></span><br><span class="line">		j = mst[k].end;//用于刚进入U的顶点</span><br><span class="line">		for (i = k + 1;i &lt; g-&gt;vCnt - 1;i++) &#123;//检查并修改V中更顶点到U的最短边</span><br><span class="line">			t = mst[i].end;</span><br><span class="line">			w = g-&gt;adjMatrix[j][t];</span><br><span class="line">			if (w &lt; mst[i].weight)</span><br><span class="line">				mst[i].weight = w, mst[i].begin = j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无邻接矩阵版kruskal</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#define N 5000</span><br><span class="line">using namespace std;</span><br><span class="line">int fa[N];</span><br><span class="line">int n, m, i, j, u, v, total,ans;</span><br><span class="line">struct edge &#123;</span><br><span class="line">	int start;</span><br><span class="line">	int to;</span><br><span class="line">	int val;</span><br><span class="line">&#125;bian[N&lt;&lt;1];</span><br><span class="line">int find(int x) &#123;</span><br><span class="line">	if (fa[x] == x)return x;</span><br><span class="line">	return fa[x] = find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line">bool cmp(edge a, edge b) &#123;</span><br><span class="line">	return a.val &lt; b.val;</span><br><span class="line">&#125;</span><br><span class="line">void kruskal(int n,int m) &#123;</span><br><span class="line">	for (i = 1;i &lt;= n;i++)fa[i] = i;</span><br><span class="line">	for (j = 1;j &lt;= m;j++)cin &gt;&gt; bian[j].start &gt;&gt; bian[j].to &gt;&gt; bian[j].val;</span><br><span class="line">	sort(bian + 1, bian + 1 + m, cmp);//快排</span><br><span class="line">	for (int i = 1;i &lt;= m;i++) &#123;</span><br><span class="line">		u = find(bian[i].start);</span><br><span class="line">		v = find(bian[i].to);</span><br><span class="line">		if (u == v)continue;//同祖先就跳过该边</span><br><span class="line">		ans += bian[i].val;</span><br><span class="line">		fa[u] = v;//更新祖先</span><br><span class="line">		total++;</span><br><span class="line">		if (total == n - 1)break;//n-1条边，最小生成树已经形成</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	kruskal(n, m);</span><br><span class="line">	cout &lt;&lt; ans;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>邻接矩阵版kruskal</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">void kruskal(Graph* g,Edge* mst) &#123;</span><br><span class="line">	int i, j, eCount, k, NUM = 0, edgeNum = 0, n1 = 0, n2 = 0;</span><br><span class="line">	int** set;</span><br><span class="line">	Edge* edges, tmp;</span><br><span class="line"></span><br><span class="line">	eCount = getECount(g);//求出边数</span><br><span class="line">	edges = (Edge*)malloc(sizeof(Edge) * eCount);//创建边的数组集合，包括每条边的起始端点，末端点和边的权重</span><br><span class="line"></span><br><span class="line">	//创建二维数组set，为顶点连通集合</span><br><span class="line">	set = (int**)malloc(sizeof(int*) * g-&gt;vCnt);</span><br><span class="line">	for (i = 0;i &lt; g-&gt;vCnt;i++)</span><br><span class="line">		set[i] = (int*)malloc(sizeof(int) * g-&gt;vCnt);</span><br><span class="line"></span><br><span class="line">	//此处是插入法对边集合按照边的权重从小到大排序</span><br><span class="line">	for (i = 0;i &lt; g-&gt;vCnt;i++) &#123;</span><br><span class="line">		for (j = 0;j &lt; i;j++) &#123;</span><br><span class="line">			if (g-&gt;adjMatrix[i][j] &lt;= 0)</span><br><span class="line">				continue;</span><br><span class="line">			tmp.begin = i;</span><br><span class="line">			tmp.end = j;</span><br><span class="line">			tmp.weight = g-&gt;adjMatrix[i][j];</span><br><span class="line">			for (k = NUM - 1;k &gt;= 0;k--) &#123;</span><br><span class="line">				if (edges[k].weight &gt; tmp.weight)</span><br><span class="line">					edges[k + 1] = edges[k];</span><br><span class="line">				else</span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">			edges[k + 1] = tmp;</span><br><span class="line">			NUM++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//初始化顶点集合，刚开始时有多少个顶点就有多少个连通集合，代表所有的点都还没有开始连通</span><br><span class="line">	for(i=0;i &lt; g-&gt;vCnt;i++)//set的每行i代表一个顶点</span><br><span class="line">		for (j = 0;j &lt; g-&gt;vCnt;j++) &#123;//即对于每个顶点，他对其他顶点的连通情况如何</span><br><span class="line">			if (i == j)//对于一个相同顶点，自己和自己连通嘛</span><br><span class="line">				set[i][j] = 1;</span><br><span class="line">			else</span><br><span class="line">				set[i][j] = 0;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	k = 0;</span><br><span class="line">	while (k &lt; g-&gt;vCnt-1) &#123;//k为已加入最小生成树的边数，只需加n-1条即可哦</span><br><span class="line">		//这两个for循环是对于set集合而言的，用来判断连通情况</span><br><span class="line">		for(i = 0;i &lt; g-&gt;vCnt;i++)</span><br><span class="line">			for (j = 0;j &lt; g-&gt;vCnt;j++) &#123;</span><br><span class="line">				//反向思维排除法</span><br><span class="line">				//对于当前边edgeNum</span><br><span class="line">				if (edges[edgeNum].begin == j &amp;&amp; set[i][j] == 1)</span><br><span class="line">					//对于begin端点，他总会是一个顶点j，他与顶点i连通时，n1=i；</span><br><span class="line">					n1 = i;</span><br><span class="line">				if (edges[edgeNum].end == j &amp;&amp; set[i][j] == 1)</span><br><span class="line">					n2 = i;</span><br><span class="line">				//如果在同一个i不同j的情况下确定n1，n2，则他们在同一连通集合，说明会构成回路</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		if (n1 != n2) &#123;//edgeNum边的两端点不连通情况</span><br><span class="line">			mst[k] = edges[edgeNum];k++;//加入最小生成树集合</span><br><span class="line"></span><br><span class="line">			for (j = 0;j &lt; g-&gt;vCnt;j++) &#123;//合并edgeNum新边的两个端点的连通集合</span><br><span class="line">				set[n1][j] = (set[n1][j] + set[n2][j]) % 2;</span><br><span class="line">				set[n2][j] = 0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		edgeNum++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-图" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/12/19/%E5%9B%BE/" class="article-date">
+  	<time datetime="2021-12-19T08:00:01.000Z" itemprop="datePublished">2021-12-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/19/%E5%9B%BE/">
+        图
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>图的存储方法很多，最常见的除了邻接矩阵、邻接表和边集数组外，还有链式前向星。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">#define N 20</span><br><span class="line">typedef struct graph &#123;</span><br><span class="line">	int vCnt;</span><br><span class="line">	int type;//0无向, 1有向图</span><br><span class="line">	int adjMatrix[N][N];</span><br><span class="line">&#125;Graph;</span><br><span class="line">Graph* initGraph(int vCnt, int type) &#123;//初始化</span><br><span class="line">	int i, j;</span><br><span class="line">	Graph* graph =(Graph*) malloc(sizeof(Graph));</span><br><span class="line">	graph-&gt;vCnt = vCnt;</span><br><span class="line">	graph-&gt;type = type;</span><br><span class="line">	for (i = 0;i &lt; vCnt;i++)</span><br><span class="line">		for (j = 0;j &lt; vCnt;j++)</span><br><span class="line">			graph-&gt;adjMatrix[i][j] = 0;</span><br><span class="line">	return graph;</span><br><span class="line">&#125;</span><br><span class="line">int getType(Graph*g)&#123;//判断类型</span><br><span class="line">	return g-&gt;type;</span><br><span class="line">&#125;</span><br><span class="line">int getType(Graph* g) &#123;//求顶点数</span><br><span class="line">	return g-&gt;vCnt;</span><br><span class="line">&#125;</span><br><span class="line">int getECount(Graph* g) &#123;//求边数</span><br><span class="line">	int i, j;</span><br><span class="line">	int eCnt = 0;</span><br><span class="line">	for (i = 0;i &lt; g-&gt;vCnt;i++)</span><br><span class="line">		for (j = 0;j &lt; g-&gt;vCnt;j++)</span><br><span class="line">			if (1 == g-&gt;adjMatrix[i][j])</span><br><span class="line">				eCnt++;</span><br><span class="line">	if (g-&gt;type == 0)</span><br><span class="line">		eCnt /= 2;</span><br><span class="line">	return eCnt;</span><br><span class="line">&#125;</span><br><span class="line">void insertEdge(Graph* g, int u, int v) &#123;//插入边</span><br><span class="line">	if (g-&gt;type == 0) &#123;</span><br><span class="line">		g-&gt;adjMatrix[u - 1][v - 1] = 1;</span><br><span class="line">		g-&gt;adjMatrix[v - 1][u - 1] = 1;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">		g-&gt;adjMatrix[u - 1][v - 1] = 1;</span><br><span class="line">&#125;</span><br><span class="line">void deleteEdge(Graph* g, int u, int v) &#123;//删除边</span><br><span class="line">	if (g-&gt;type == 0) &#123;</span><br><span class="line">		g-&gt;adjMatrix[u - 1][v - 1] = 0;</span><br><span class="line">		g-&gt;adjMatrix[v - 1][u - 1] = 0;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">		g-&gt;adjMatrix[u - 1][v - 1] = 0;</span><br><span class="line">&#125;</span><br><span class="line">int isAdjacent(Graph* g, int u, int v) &#123;//判断两边是否相连</span><br><span class="line">	return g-&gt;adjMatrix[u - 1][v - 1];</span><br><span class="line">&#125;</span><br><span class="line">int getDegree(Graph* g, int u) &#123;//求一个顶点的度数</span><br><span class="line">	int i, j, d = 0;</span><br><span class="line">	if (g-&gt;type == 0) </span><br><span class="line">		for (j = 0;j &lt; g-&gt;vCnt;j++)</span><br><span class="line">			d += g-&gt;adjMatrix[u - 1][j];</span><br><span class="line">	else &#123;</span><br><span class="line">		for(j=0;j&lt;g-&gt;vCnt;j++)</span><br><span class="line">			d += g-&gt;adjMatrix[u - 1][j];</span><br><span class="line">		for(i=0;j&lt;g-&gt;vCnt;i++)</span><br><span class="line">			d += g-&gt;adjMatrix[i][u-1];</span><br><span class="line">	&#125;</span><br><span class="line">	return d;</span><br><span class="line">&#125;</span><br><span class="line">int getOutdegree(Graph* g, int u) &#123;//求一个顶点的出度</span><br><span class="line">	int j, d = 0;</span><br><span class="line">	if (g-&gt;type == 0)</span><br><span class="line">		printf(&quot;Type error!\n&quot;);</span><br><span class="line">	else</span><br><span class="line">		for(j=0;j&lt;g-&gt;vCnt;j++)</span><br><span class="line">			d += g-&gt;adjMatrix[u - 1][j];</span><br><span class="line">	return d;</span><br><span class="line">&#125;</span><br><span class="line">int getOutdegree(Graph* g, int u) &#123;//求一个顶点的入度</span><br><span class="line">	int i, d = 0;</span><br><span class="line">	if (g-&gt;type == 0)</span><br><span class="line">		printf(&quot;Type error!\n&quot;);</span><br><span class="line">	else</span><br><span class="line">		for (i = 0;i &lt; g-&gt;vCnt;i++)</span><br><span class="line">			d += g-&gt;adjMatrix[i][u-1];</span><br><span class="line">	return d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>链式前向星具有边集数组和邻接表的功能，属于静态链表，不需要频繁地创建结点，应用十分灵活。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct node&#123;</span><br><span class="line">    int to,next,w;</span><br><span class="line">&#125;edge[maxe];//边集数组，边数一般要设置比maxn*maxn大的数，如果题目有要求除外</span><br><span class="line"> </span><br><span class="line">int head[maxn];//头结点数组</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void add(int u,int v,int w)&#123;//添加一条边</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].w=w;</span><br><span class="line">    edge[cnt].next=head[u];</span><br><span class="line">    head[u]=cnt++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>如何使用链式前向星访问一个结点u的所有邻接点呢</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(int i=head[u];i!=-1;i=edge[i].next)&#123;</span><br><span class="line">    int v=edge[i].to; //u的邻接点</span><br><span class="line">    int w=edge[i].w; //u—v的权值</span><br><span class="line">       …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-KMP字符串匹配" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/12/13/KMP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" class="article-date">
+  	<time datetime="2021-12-13T06:27:49.000Z" itemprop="datePublished">2021-12-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/13/KMP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/">
+        KMP字符串匹配
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cal_next</span><span class="params">(<span class="keyword">char</span>* str, <span class="keyword">int</span>* next, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line">	next[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>;i &lt; len;i++) &#123;<span class="comment">//对于模式串中字符i来说</span></span><br><span class="line">		j = next[i - <span class="number">1</span>];<span class="comment">//首先使j等于前后缀相同的数量，即模式串数组下标的前缀后一位</span></span><br><span class="line">		<span class="keyword">while</span> (str[j + <span class="number">1</span>] != str[i] &amp;&amp; (j &gt;= <span class="number">0</span>))j = next[j];</span><br><span class="line">		<span class="comment">//判断模式串数组前缀后一位是否等于目前模式串中的字符i。j=-1为特判。</span></span><br><span class="line">		<span class="comment">//若不相等，则该最长前缀不能包含字符i了，该最长公缀字符串需要更新了，更新为该字符串的最长前缀字符串，特判j=-1，更新不了了。</span></span><br><span class="line">		<span class="keyword">if</span> (str[i] == str[j + <span class="number">1</span>])next[i] = j + <span class="number">1</span>;<span class="comment">//包含的了字符i，最长前缀长度加1.</span></span><br><span class="line">		<span class="keyword">else</span> next[i] = <span class="number">-1</span>;<span class="comment">//是特判的情况，为-1.</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KMP</span><span class="params">(<span class="keyword">char</span>* str, <span class="keyword">int</span> slen, <span class="keyword">char</span>* ptr, <span class="keyword">int</span> plen, <span class="keyword">int</span>* next)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> s_i = <span class="number">0</span>, p_i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (s_i &lt; slen &amp;&amp; p_i &lt; plen) &#123;</span><br><span class="line">		<span class="keyword">if</span> (str[s_i] == ptr[p_i]) &#123;</span><br><span class="line">			s_i++;p_i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (p_i == <span class="number">0</span>)s_i++;</span><br><span class="line">			<span class="keyword">else</span> p_i = next[p_i - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (p_i == plen) ? (s_i - plen) : <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cal_next</span><span class="params">(string s, <span class="keyword">int</span> len, <span class="keyword">int</span> nxt[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">-1</span>, j = <span class="number">0</span>;</span><br><span class="line">    nxt[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span> (j &lt; len) &#123;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">-1</span> || s[j] == s[k]) &#123;</span><br><span class="line">            ++k, ++j;</span><br><span class="line">            nxt[j] = k;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            k = nxt[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kmp</span><span class="params">(string s, string t, <span class="keyword">int</span> nxt[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; s.<span class="built_in">size</span>() &amp;&amp; j &lt; t.<span class="built_in">size</span>()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">-1</span> || s[i] == t[j]) &#123;</span><br><span class="line">            ++i, ++j;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            j = nxt[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (j &gt;= t.<span class="built_in">size</span>())</span><br><span class="line">        <span class="keyword">return</span> i = t.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-背包" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/12/04/%E8%83%8C%E5%8C%85/" class="article-date">
+  	<time datetime="2021-12-04T12:44:43.000Z" itemprop="datePublished">2021-12-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/04/%E8%83%8C%E5%8C%85/">
+        背包
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em><strong>01背包</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每种物品只有一件，可以放与不放进书包</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">定义状态：d[i][j]为前i种物品，装进可装j重量的书包 的最大价值。</span><br><span class="line">初始化：d[每种物品][0]=0</span><br><span class="line">状态转移方程：dp[i][j] = max(dp[i−1][j], dp[i−1][j−w[i]]+v[i]) // j &gt;= w[i]</span><br><span class="line">对于d[i][j]的第i种物品，可放可不放，</span><br><span class="line">即</span><br><span class="line">不放：d[i-1][j]，重量不变；</span><br><span class="line">放：先有前提能装下（j-w[i]&gt;=0）d[i-1][j-w[i]]+v[i]，放入后质量为j；</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 01背包问题伪代码(空间优化版)</span><br><span class="line">dp[0,...,W] = 0</span><br><span class="line">for i = 1,...,N</span><br><span class="line">    for j = W,...,w[i] // 必须逆向枚举!!!</span><br><span class="line">        dp[j] = max(dp[j], dp[j−w[i]]+v[i])</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>完全背包</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">装入第i种物品，此时和01背包不太一样，因为每种物品有无限个（但注意书包限重是有限的），所以此时不应该转移到dp[i−1][j−w[i]]而应该转移到dp[i][j−w[i]]，即装入第i种商品后还可以再继续装入第种商品。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = max(dp[i−1][j], dp[i][j−w[i]]+v[i]) // j &gt;= w[i]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 完全背包问题思路一伪代码(空间优化版)</span><br><span class="line">dp[0,...,W] = 0</span><br><span class="line">for i = 1,...,N</span><br><span class="line">    for j = w[i],...,W // 必须正向枚举!!!</span><br><span class="line">        dp[j] = max(dp[j], dp[j−w[i]]+v[i])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># k为装入第i种物品的件数, k &lt;= j/w[i]</span><br><span class="line">dp[i][j] = max&#123;(dp[i-1][j − k*w[i]] + k*v[i]) for every k&#125;</span><br><span class="line">// 完全背包问题思路二伪代码(空间优化版)</span><br><span class="line">dp[0,...,W] = 0</span><br><span class="line">for i = 1,...,N</span><br><span class="line">    for j = W,...,w[i] // 必须逆向枚举!!!</span><br><span class="line">        for k = [0, 1,..., j/w[i]]</span><br><span class="line">            dp[j] = max(dp[j], dp[j−k*w[i]]+k*v[i])</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>多重背包</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># k为装入第i种物品的件数, k &lt;= min(n[i], j/w[i])</span><br><span class="line">dp[i][j] = max&#123;(dp[i-1][j − k*w[i]] + k*v[i]) for every k&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 完全背包问题思路二伪代码(空间优化版)</span><br><span class="line">dp[0,...,W] = 0</span><br><span class="line">for i = 1,...,N</span><br><span class="line">    for j = W,...,w[i] // 必须逆向枚举!!!</span><br><span class="line">        for k = [0, 1,..., min(n[i], j/w[i])]</span><br><span class="line">            dp[j] = max(dp[j], dp[j−k*w[i]]+k*v[i])</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-线段树" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -617,270 +915,6 @@
 	<a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
 	</div>
 
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-快速幂" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/11/08/%E5%BF%AB%E9%80%9F%E5%B9%82/" class="article-date">
-  	<time datetime="2021-11-08T13:10:05.000Z" itemprop="datePublished">2021-11-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/08/%E5%BF%AB%E9%80%9F%E5%B9%82/">
-        快速幂
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">递归快速幂</span><br><span class="line">		//泛型的快速幂</span><br><span class="line">		template &lt;typename T&gt;只要a的数据类型支持乘法且满足结合律</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int qpow(int a, int n)</span><br><span class="line">&#123;</span><br><span class="line">	if (n == 0) return 1;</span><br><span class="line">	else if (n % 2 == 1)</span><br><span class="line">		return qpow(a, n - 1 * a);</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		int tmp = qpow(a, n / 2);</span><br><span class="line">		return tmp * tmp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">注意，这个temp变量是必要的，</span><br><span class="line">因为如果不把[公式]记录下来，直接写成qpow(a, n /2)*qpow(a, n /2)，</span><br><span class="line">那会计算两次[公式]，</span><br><span class="line">整个算法就退化为了 [公式] 。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">非递归快速幂</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int qpow(int a, int n)</span><br><span class="line">&#123;</span><br><span class="line">	int ans = 1;</span><br><span class="line">	while (n)</span><br><span class="line">	&#123;</span><br><span class="line">		if (n &amp; 1) //如果n的当前末位为1</span><br><span class="line">			ans *= a;</span><br><span class="line">		a *= a;</span><br><span class="line">		n &gt;&gt;= 1;//n往右移一位</span><br><span class="line">	&#125;</span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//递归快速幂（对大素数取模）</span><br><span class="line">#define MOD 1000000007</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll qpow(ll a, ll n)</span><br><span class="line">&#123;</span><br><span class="line">    if (n == 0)</span><br><span class="line">        return 1;</span><br><span class="line">    else if (n % 2 == 1)</span><br><span class="line">        return qpow(a, n - 1) * a % MOD;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        ll temp = qpow(a, n / 2) % MOD;</span><br><span class="line">        return temp * temp % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-搜索与回溯" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/11/06/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF/" class="article-date">
-  	<time datetime="2021-11-06T07:59:49.000Z" itemprop="datePublished">2021-11-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/06/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF/">
-        搜索与回溯
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><em><strong>算法框架1</strong></em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int search(int k)</span><br><span class="line">&#123;</span><br><span class="line">    if(到达目的) 输出解;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=1;i&lt;=算符种数;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(满足条件)</span><br><span class="line">            &#123;</span><br><span class="line">                保存结果;</span><br><span class="line">                search(k+1);</span><br><span class="line">                恢复：保存结果之前的状态&#123;回溯一步&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">int n;</span><br><span class="line">int num[10001];   //存储数据</span><br><span class="line">bool mark[10001]; //判断该数是否被标记过</span><br><span class="line">bool check(int x,int y)    //判断是否满足&quot;素数环&quot;条件</span><br><span class="line">&#123;</span><br><span class="line">	int k=2,i=x+y;</span><br><span class="line">	while(k&lt;=sqrt(i)&amp;&amp;i%k!=0) k++;</span><br><span class="line">	if(k&gt;sqrt(i)) return true;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br><span class="line">void print()   //输出函数</span><br><span class="line">&#123;</span><br><span class="line">	for(int i=1;i&lt;n;i++)</span><br><span class="line">		printf(&quot;%d &quot;,num[i]);</span><br><span class="line">	printf(&quot;%d\n&quot;,num[n]);</span><br><span class="line">&#125;</span><br><span class="line">void search(int x)  //搜索函数，全排列</span><br><span class="line">&#123;</span><br><span class="line">    if(x==n+1&amp;&amp;check(num[1],num[n])) print(); //增加num[1]==1使初始值为1</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">		if(!mark[i]&amp;&amp;check(num[x-1],i))   //判断该数是否被标记以及是否与上一个数互质</span><br><span class="line">		&#123;</span><br><span class="line">			num[x]=i;</span><br><span class="line">			mark[i]=true; //标记该数</span><br><span class="line"> </span><br><span class="line">			search(x+1);  //下一轮回溯</span><br><span class="line">			mark[i]=false;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	search(1);       //第一轮回溯开始</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><em><strong>算法框架2</strong></em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int search(int k)</span><br><span class="line">&#123;</span><br><span class="line">        for(int i=1;i&lt;=算符种数;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(满足条件)</span><br><span class="line">            &#123;</span><br><span class="line">                保存结果;</span><br><span class="line">                if(到达目的) 输出解;</span><br><span class="line">                else</span><br><span class="line">                search(k+1);</span><br><span class="line">                恢复：保存结果之前的状态&#123;回溯一步&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void search(int x)  //搜索函数，全排列</span><br><span class="line">&#123;</span><br><span class="line">	for (int i = 1;i &lt;= n;i++)</span><br><span class="line">		if (!mark[i] &amp;&amp; check(num[x - 1], i))   </span><br><span class="line">		&#123;</span><br><span class="line">			num[x] = i;</span><br><span class="line">			mark[i] = true; //标记该数</span><br><span class="line">			if (x == n &amp;&amp; check(num[1], num[n])) print(); //判断并输出</span><br><span class="line">			search(x + 1);  //下一轮回溯</span><br><span class="line">			mark[i] = false;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-堆排序" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/31/%E5%A0%86%E6%8E%92%E5%BA%8F/" class="article-date">
-  	<time datetime="2021-10-31T09:22:20.000Z" itemprop="datePublished">2021-10-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/31/%E5%A0%86%E6%8E%92%E5%BA%8F/">
-        堆排序
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">void adjust(vector&lt;int&gt;&amp; arr, int len, int index)</span><br><span class="line">&#123;</span><br><span class="line">    int left = 2 * index + 1;</span><br><span class="line">    int right = 2 * index + 2;</span><br><span class="line">    int maxIdx = index;</span><br><span class="line">    if (left&lt;len &amp;&amp; arr[left]&gt;arr[maxIdx])maxIdx = left;</span><br><span class="line">    if (right&lt;len &amp;&amp; arr[right]&gt;arr[maxIdx])maxIdx = right;</span><br><span class="line">    if (maxIdx != index)</span><br><span class="line">    &#123;</span><br><span class="line">        swap(arr[maxIdx], arr[index]);</span><br><span class="line">        adjust(arr, len, maxIdx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void buildheap(vector&lt;int&gt;&amp; arr, int size)</span><br><span class="line">&#123;</span><br><span class="line">    for (int i = size / 2 - 1;i &gt;= 0;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        adjust(arr, size, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void heapsort(vector&lt;int&gt;&amp; arr, int size)</span><br><span class="line">&#123;</span><br><span class="line">    buildheap(arr, size);</span><br><span class="line">    for (int i = size - 1;i &gt;= 1;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        swap(arr[0], arr[i]);</span><br><span class="line">        adjust(arr, i, 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E6%8E%92%E5%BA%8F/">排序</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-坐标表示" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/30/%E5%9D%90%E6%A0%87%E8%A1%A8%E7%A4%BA/" class="article-date">
-  	<time datetime="2021-10-30T03:07:16.000Z" itemprop="datePublished">2021-10-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/30/%E5%9D%90%E6%A0%87%E8%A1%A8%E7%A4%BA/">
-        坐标表示
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">int n, m, k, a, b, ans;</span><br><span class="line">int s[5005][5005];</span><br><span class="line"></span><br><span class="line">bool pd(int x, int y) &#123; //判断是否越界 </span><br><span class="line">    if (x &lt; 1 || y &lt; 1 || x &gt; n || y &gt; n) return 0;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k); //读入 </span><br><span class="line">    for (int i = 1; i &lt;= m + k; i++) &#123; //由于计算火把和萤石的步骤很像，所以合并了 </span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;a, &amp;b); //读入坐标 </span><br><span class="line">        for (int x = -2; x &lt;= 2; x++)</span><br><span class="line">            for (int y = -2; y &lt;= 2; y++) //枚举5*5的方阵(通过计算距离) </span><br><span class="line">                if ((i &gt; m || abs(x) + abs(y) &lt;= 2) &amp;&amp; pd(x + a, b + y))</span><br><span class="line">                    //如果是萤石(i &gt; m)或者x与y的坐标差的和不超过2(火把光照距离不超过2)并且</span><br><span class="line">                    //没有越界就标记 </span><br><span class="line">                    s[x + a][b + y]++;</span><br><span class="line">	|暗|暗| 光 |暗|暗| 			</span><br><span class="line">    |暗|光| 光 |光|暗|			</span><br><span class="line">    |光|光|火把|光|光|</span><br><span class="line">    |暗|光| 光 |光|暗|</span><br><span class="line">    |暗|暗| 光 |暗|暗|   </span><br><span class="line">    </span><br><span class="line">    |光|光| 光 |光|光|</span><br><span class="line">    |光|光| 光 |光|光|</span><br><span class="line">    |光|光|萤石|光|光|</span><br><span class="line">    |光|光| 光 |光|光|</span><br><span class="line">    |光|光| 光 |光|光|</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
 
       
       <div class="clearfix"></div>
