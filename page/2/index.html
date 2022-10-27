@@ -152,6 +152,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-dp" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/04/05/dp/" class="article-date">
+  	<time datetime="2022-04-05T12:24:18.000Z" itemprop="datePublished">2022-04-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/05/dp/">
+        dp
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"><span class="keyword">bool</span> f[N*<span class="number">10000</span>];</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(f));</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>, weight = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (vis[i])<span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = weight;j &gt;= <span class="number">0</span>;j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (f[j] &amp;&amp; !f[j + a[i]]) &#123;</span><br><span class="line">                f[j + a[i]] = <span class="number">1</span>;</span><br><span class="line">                ans++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        weight += a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    k = <span class="built_in">max</span>(k, ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> del)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( del&gt; m)<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (i == n+<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (del == m) </span><br><span class="line">            <span class="built_in">dp</span>();</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(i + <span class="number">1</span>, del);</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    vis[i] = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">dfs</span>(i + <span class="number">1</span>, del + <span class="number">1</span>);</span><br><span class="line">    vis[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-可持久化线段树" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -753,66 +817,6 @@
 	<a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
 	</div>
 
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-离散化" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/03/28/%E7%A6%BB%E6%95%A3%E5%8C%96/" class="article-date">
-  	<time datetime="2022-03-28T15:11:19.000Z" itemprop="datePublished">2022-03-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/28/%E7%A6%BB%E6%95%A3%E5%8C%96/">
-        离散化
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, m, k;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> l, r, cnt;</span><br><span class="line">    ll len;</span><br><span class="line">&#125;tree[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Line</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> f;</span><br><span class="line">    ll l, r, h;</span><br><span class="line">    <span class="built_in">Line</span>() : <span class="built_in">l</span>(), <span class="built_in">r</span>(), <span class="built_in">h</span>(), <span class="built_in">f</span>() &#123;&#125;;</span><br><span class="line">    <span class="built_in">Line</span>(ll _l, ll _r, ll _h, <span class="keyword">int</span> _f) :<span class="built_in">l</span>(_l), <span class="built_in">r</span>(_r), <span class="built_in">h</span>(_h), <span class="built_in">f</span>(_f) &#123;&#125;;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Line&amp; t)<span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> h &lt; t.h;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;line[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line">ll x[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">up</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tree[p].cnt) &#123;</span><br><span class="line">        tree[p].len = x[tree[p].r + <span class="number">1</span>] - x[tree[p].l];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        tree[p].len = tree[lp].len + tree[rp].len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    tree[p].l = l;</span><br><span class="line">    tree[p].r = r;</span><br><span class="line">    <span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">        tree[p].len = tree[p].cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> m = mid;</span><br><span class="line">    <span class="built_in">build</span>(lp, l, m);</span><br><span class="line">    <span class="built_in">build</span>(rp, m + <span class="number">1</span>, r);</span><br><span class="line">    <span class="built_in">up</span>(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x[tree[p].r + <span class="number">1</span>] &lt;= l || x[tree[p].l] &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (x[tree[p].l] &gt;= l &amp;&amp; x[tree[p].r + <span class="number">1</span>] &lt;= r) &#123;</span><br><span class="line">        tree[p].cnt += w;</span><br><span class="line">        <span class="built_in">up</span>(p);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> m = (tree[p].l + tree[p].r) / <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">update</span>(lp, l, r, w);</span><br><span class="line">    <span class="built_in">update</span>(rp, l, r, w);</span><br><span class="line">    <span class="built_in">up</span>(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> x1, x2, y1, y2;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++) &#123;</span><br><span class="line">        cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;</span><br><span class="line">        x[<span class="number">2</span> * i - <span class="number">1</span>] = x1;</span><br><span class="line">        x[<span class="number">2</span> * i] = x2;</span><br><span class="line">        line[<span class="number">2</span> * i - <span class="number">1</span>] = <span class="built_in">Line</span>(x1, x2, y1, <span class="number">1</span>);</span><br><span class="line">        line[<span class="number">2</span> * i] = <span class="built_in">Line</span>(x1, x2, y2, <span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    n &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">sort</span>(line + <span class="number">1</span>, line + n + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">sort</span>(x + <span class="number">1</span>, x + n + <span class="number">1</span>);</span><br><span class="line">    m = <span class="built_in">unique</span>(x + <span class="number">1</span>, x + n + <span class="number">1</span>) - x - <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>, <span class="number">1</span>, m - <span class="number">1</span>);</span><br><span class="line">    ll ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; n;i++) &#123;</span><br><span class="line">        <span class="built_in">update</span>(<span class="number">1</span>, line[i].l, line[i].r, line[i].f);</span><br><span class="line">        ans += (tree[<span class="number">1</span>].len * (line[i + <span class="number">1</span>].h - line[i].h));</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-	</div>
-
-      
 
       
       <div class="clearfix"></div>
