@@ -88,7 +88,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 14.29px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 14.29px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 15.71px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 17.14px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 11.43px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 18.57px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%A0%91/" style="font-size: 10px;">树</a> <a href="/tags/%E6%A0%91%E4%B8%8A%E7%AE%97%E6%B3%95/" style="font-size: 10px;">树上算法</a> <a href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树形结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.86px;">算法</a>
+						<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 14.29px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 14.29px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 15.71px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 17.14px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 11.43px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 18.57px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%A0%91/" style="font-size: 11.43px;">树</a> <a href="/tags/%E6%A0%91%E4%B8%8A%E7%AE%97%E6%B3%95/" style="font-size: 10px;">树上算法</a> <a href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树形结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.86px;">算法</a>
 					</div>
 				</section>
 				
@@ -151,6 +151,72 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-最大流" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/17/%E6%9C%80%E5%A4%A7%E6%B5%81/" class="article-date">
+  	<time datetime="2022-03-17T02:06:30.000Z" itemprop="datePublished">2022-03-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/17/%E6%9C%80%E5%A4%A7%E6%B5%81/">
+        最大流
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>步骤</p>
+<p>利用bfs找到一条最短增广路径，记录该路径的最小流量<br>利用一个数组把这个路径上的流量更新<br>不断重复1 , 2直到没有增广路径为止</p>
+<p><strong>EK</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ll g[N][N], pre[N], dis[N];</span><br><span class="line">queue&lt;ll&gt;q;</span><br><span class="line">ll bfs(ll s,ll t) &#123;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++)pre[i] = -1;</span><br><span class="line">    while (!q.empty())q.pop();</span><br><span class="line">    q.push(s);</span><br><span class="line">    dis[s] = inf;</span><br><span class="line">    while (!q.empty()) &#123;</span><br><span class="line">        ll x = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        if (x == t)break;</span><br><span class="line">        for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">            if (pre[i] == -1 &amp;&amp; g[x][i]) &#123;</span><br><span class="line">                pre[i] = x;</span><br><span class="line">                dis[i] = min(dis[x], g[x][i]);</span><br><span class="line">                q.push(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (pre[t] == -1)return -1;</span><br><span class="line">    else return dis[t];</span><br><span class="line">&#125;</span><br><span class="line">ll EK(ll s, ll t) &#123;</span><br><span class="line">    ll inc, ans = 0;</span><br><span class="line">    while (1) &#123;</span><br><span class="line">        inc = bfs(s, t);</span><br><span class="line">        if (inc == -1)break;</span><br><span class="line">        ll k = t;</span><br><span class="line">        while (k != s) &#123;</span><br><span class="line">            g[k][pre[k]] += inc;</span><br><span class="line">            g[pre[k]][k] -= inc;</span><br><span class="line">            k = pre[k];</span><br><span class="line">        &#125;</span><br><span class="line">        ans += inc;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Dinic</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">int deep[N], g[N][N];</span><br><span class="line">queue&lt;int&gt;q;</span><br><span class="line">bool bfs() &#123;</span><br><span class="line">    while (!q.empty())q.pop();</span><br><span class="line">    memset(deep, -1, sizeof(deep));</span><br><span class="line">    deep[s] = 0;</span><br><span class="line">    q.push(s);</span><br><span class="line">    while (!q.empty()) &#123;</span><br><span class="line">        int x = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">            if (g[x][i] &gt; 0 &amp;&amp; deep[i] == -1) &#123;</span><br><span class="line">                deep[i] = deep[x] + 1;</span><br><span class="line">                q.push(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (deep[t] &gt; 0)return 1;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int dfs(int x,int mx) &#123;</span><br><span class="line">    int a;</span><br><span class="line">    if (x == t)return mx;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        if (g[x][i] &gt; 0 &amp;&amp; deep[i] == deep[x] + 1 &amp;&amp; (a = dfs(i, min(mx, g[x][i])))) &#123;</span><br><span class="line">            g[x][i] -= a;</span><br><span class="line">            g[i][x] += a;</span><br><span class="line">            return a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int dinic() &#123;</span><br><span class="line">    int ans = 0;</span><br><span class="line">    while (bfs()) &#123;</span><br><span class="line">        ans += dfs(s, inf);</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-堆" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -746,85 +812,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-多源最短路径" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/12/22/%E5%A4%9A%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" class="article-date">
-  	<time datetime="2021-12-22T03:44:15.000Z" itemprop="datePublished">2021-12-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/22/%E5%A4%9A%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">
-        任一顶点对最短路径
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>任一顶点对最短路径floyd—–动态规划</p>
-<p>a—-b和a—c—b距离比较，取小</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#define ms 10</span><br><span class="line">void floyd(MGraph g, int A[][ms], int path[][ms]) &#123;</span><br><span class="line">	int i, j, k;</span><br><span class="line">	//初始化</span><br><span class="line">	for (i = 0;i &lt; g.n;i++) </span><br><span class="line">		for (j = 0;j &lt; g.n;j++) &#123;</span><br><span class="line">			A[i][j] = g.edge[i][j];</span><br><span class="line">			path[i][j] = -1;</span><br><span class="line">		&#125;</span><br><span class="line">	//k为中间点，对顶点对&lt;i，j&gt;检测和修改</span><br><span class="line">	for (k = 0;k &lt; g.n;k++)</span><br><span class="line">		for(i = 0;i &lt; g.n;i++)</span><br><span class="line">			for(j= 0;j &lt; g.n;j++)</span><br><span class="line">				if (A[i][j] &gt; A[i][k] + A[k][j]) &#123;</span><br><span class="line">					A[i][j] = A[i][k] + A[k][j];</span><br><span class="line">					path[i][j] = k;</span><br><span class="line">				&#125;</span><br><span class="line">&#125;</span><br><span class="line">void printpath(int u, int v, int path[][ms]) &#123;</span><br><span class="line">	if (path[u][v] = -1)</span><br><span class="line">		cout &lt;&lt; u &lt;&lt; &quot;-&gt;&quot; &lt;&lt; v;//直接输出</span><br><span class="line">	else &#123;</span><br><span class="line">		int mid = path[u][v];</span><br><span class="line">		printpath(u, mid, path);</span><br><span class="line">		printpath(mid, v, path);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//原理：由 i 到 j 的最短路径中的一点 k，将最短路径分段为从 i 到 k 的最短路径 和 从 k 到 j 的最短路径，最短路径就为从i到k的最短路径+从k到j的最短路径，一直分段，直到分到 i 和 j 为同一点，停止</span><br></pre></td></tr></table></figure>
-
-
-
-<p>Johnson</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">struct edge &#123;</span><br><span class="line">    int w;</span><br><span class="line">    int u;</span><br><span class="line">    int to, next;</span><br><span class="line">&#125;e[N&lt;&lt;1];</span><br><span class="line">int head[N];</span><br><span class="line">void add(int u, int v, int w) &#123;</span><br><span class="line">    static int cnt = 0;</span><br><span class="line">    ++cnt;</span><br><span class="line">    e[cnt] = &#123; w,u,v,head[u] &#125;;</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line">int n, m, k;</span><br><span class="line">int h[N];</span><br><span class="line">int S;</span><br><span class="line">int vis[N];</span><br><span class="line">void spfa(int s) &#123;</span><br><span class="line">    queue&lt;int&gt;q;</span><br><span class="line">    memset(h, 63, sizeof(h));</span><br><span class="line">    h[s] = 0;</span><br><span class="line">    q.push(s);</span><br><span class="line">    for (int i = 1;i &lt;= n;i++)add(0, i, 0);</span><br><span class="line">    while (!q.empty()) &#123;</span><br><span class="line">        int x = q.front();q.pop();vis[x] = 1;</span><br><span class="line">        for (int i = head[x];i;i = e[i].next) &#123;</span><br><span class="line">            int y = e[i].to, w = e[i].w;</span><br><span class="line">            if (h[x] + w &lt; h[y]) &#123;</span><br><span class="line">                h[y] = h[x] + w;</span><br><span class="line">                if (!vis[y]) &#123;</span><br><span class="line">                    vis[y] = 1;</span><br><span class="line">                    q.push(y);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[x] = false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int ans[100][100];</span><br><span class="line">void johnson(int s) &#123;</span><br><span class="line">    spfa(s);</span><br><span class="line">    for (int i = 1;i &lt;= m;i++)</span><br><span class="line">        ans[e[i].u][e[i].to] += h[e[i].u] - h[e[i].to];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;tuple&gt;</span><br><span class="line">#include&lt;unordered_map&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;deque&gt;</span><br><span class="line">#include&lt;map&gt;</span><br><span class="line">#include&lt;numeric&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;sstream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">#define inf 1000000000</span><br><span class="line">#define mid (l+r)&gt;&gt;1</span><br><span class="line">#define lp p&lt;&lt;1</span><br><span class="line">#define rp p&lt;&lt;1|1</span><br><span class="line">#define pr pair&lt;int,int&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int N = 5e5 + 5;</span><br><span class="line">const int mod = 1e9 + 7;</span><br><span class="line">struct edge &#123;</span><br><span class="line">    int w;</span><br><span class="line">    int u;</span><br><span class="line">    int to, next;</span><br><span class="line">&#125;e[N &lt;&lt; 1];</span><br><span class="line">int head[N];</span><br><span class="line">void add(int u, int v, int w) &#123;</span><br><span class="line">    static int cnt = 0;</span><br><span class="line">    ++cnt;</span><br><span class="line">    e[cnt] = &#123; w,u,v,head[u] &#125;;</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line">int n, m, k;</span><br><span class="line">int dis[N], cnt[N], vis[N];</span><br><span class="line">int Dis[N];</span><br><span class="line">bool spfa(int s) &#123;</span><br><span class="line">    fill(dis, dis + n + 1, inf);</span><br><span class="line">    queue&lt;int&gt;q;</span><br><span class="line">    q.push(s);</span><br><span class="line">    bool f = 0;//为真即负环</span><br><span class="line">    dis[s] = 0;</span><br><span class="line">    cnt[s]++;</span><br><span class="line">    vis[s] = 1;//入队即true</span><br><span class="line">    while (!q.empty()) &#123;</span><br><span class="line">        int x = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        vis[x] = 0;//出队即false</span><br><span class="line">        int  v, w;</span><br><span class="line">        for (int i = head[x];i;i = e[i].next) &#123;</span><br><span class="line">            v = e[i].to;</span><br><span class="line">            w = e[i].w;</span><br><span class="line">            if (dis[v] &gt; dis[x] + w) &#123;//松弛技术</span><br><span class="line">                dis[v] = dis[x] + w;</span><br><span class="line">                if (!vis[v]) &#123;//判断入队</span><br><span class="line">                    q.push(v);</span><br><span class="line">                    cnt[v]++;</span><br><span class="line">                    vis[v] = 1;</span><br><span class="line">                    if (cnt[v] &gt; n) &#123; f = 1;return f; &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return f;</span><br><span class="line">&#125;</span><br><span class="line">struct node &#123;</span><br><span class="line">    int len, id;</span><br><span class="line">    bool operator&lt;(node a)const &#123;</span><br><span class="line">        return len &gt; a.len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">void dijkstra(int s) &#123;</span><br><span class="line">    priority_queue&lt;node&gt;q;</span><br><span class="line">    fill(dis, dis + n + 1, inf);</span><br><span class="line">    memset(vis, 0, sizeof(vis));</span><br><span class="line">    q.push(&#123; 0,s &#125;);</span><br><span class="line">    dis[s] = 0;</span><br><span class="line">    while (!q.empty()) &#123;</span><br><span class="line">        int x = q.top().id;</span><br><span class="line">        q.pop();</span><br><span class="line">        if (!vis[x]) &#123;</span><br><span class="line">            vis[x] = 1;</span><br><span class="line">            for (int i = head[x];i;i = e[i].next) &#123;</span><br><span class="line">                int to = e[i].to;</span><br><span class="line">                int w = e[i].w;</span><br><span class="line">                if (dis[to] &gt; dis[x] + w) &#123;</span><br><span class="line">                    dis[to] = dis[x] + w;</span><br><span class="line">                    //cout &lt;&lt; x &lt;&lt; &quot;-&gt;&quot; &lt;&lt; to &lt;&lt; &quot;=&quot; &lt;&lt; dis[to] &lt;&lt; endl;</span><br><span class="line">                    if (!vis[to]) q.push(&#123; dis[to],to &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    for (int i = 1;i &lt;= m;i++) &#123;</span><br><span class="line">        int u, v, w;</span><br><span class="line">        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">        add(u, v, w);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        add(0, i, 0);</span><br><span class="line">    &#125;</span><br><span class="line">    if (spfa(0)) &#123; cout &lt;&lt; -1;return 0; &#125;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        Dis[i] = dis[i];</span><br><span class="line">        for (int j = head[i];j;j = e[j].next) &#123;</span><br><span class="line">            e[j].w += dis[i] - dis[e[j].to];</span><br><span class="line">            //cout &lt;&lt; e[j].u &lt;&lt; &quot;-&gt;&quot; &lt;&lt; e[j].to &lt;&lt; &quot;=&quot; &lt;&lt; e[j].w &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">        ll ans = 0;</span><br><span class="line">        dijkstra(i);</span><br><span class="line">        //cout &lt;&lt; &quot;第&quot; &lt;&lt; i &lt;&lt; &quot;个点：\n&quot;;</span><br><span class="line">        for (int j = 1;j &lt;= n;j++) &#123;</span><br><span class="line">            //cout &lt;&lt; j &lt;&lt; &#x27;:&#x27; &lt;&lt; dis[j] &lt;&lt; endl;</span><br><span class="line">            if (dis[j] == inf)ans += (ll)j * inf;</span><br><span class="line">            else ans += (ll)j * (dis[j] + Dis[j] - Dis[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E5%9B%BE/">图</a>
 	</div>
 
 
