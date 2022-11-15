@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>树的重心 | Hello Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="定义树的重心定义为，当把节点x去掉后，其最大子树的节点个数最少(或者说成最大连通块的节点数最少)，那么节点x就是树的重心。通俗的理解：这个点去掉后，剩下的联通块尽量平均 树上任选一结点 u 开始 DFS，沿路统计其所有子树的大小和以它为根的子树的大小，这样也就可以得到一个点所有子树的大小及的大小 还有一个问题，如果这个点不是根节点，那么删掉后剩下的连通块不止有他的子树，还有他上面的部分，这部分可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树的重心">
+<meta property="og:url" content="http://example.com/2022/11/10/%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83/index.html">
+<meta property="og:site_name" content="Hello Blog">
+<meta property="og:description" content="定义树的重心定义为，当把节点x去掉后，其最大子树的节点个数最少(或者说成最大连通块的节点数最少)，那么节点x就是树的重心。通俗的理解：这个点去掉后，剩下的联通块尽量平均 树上任选一结点 u 开始 DFS，沿路统计其所有子树的大小和以它为根的子树的大小，这样也就可以得到一个点所有子树的大小及的大小 还有一个问题，如果这个点不是根节点，那么删掉后剩下的连通块不止有他的子树，还有他上面的部分，这部分可以">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-10T13:51:54.000Z">
+<meta property="article:modified_time" content="2022-11-11T07:01:42.350Z">
+<meta property="article:author" content="haifenggo">
+<meta property="article:tag" content="树">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Hello Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">haifenggo</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/categories">Categories</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/dp/" style="font-size: 13.75px;">dp</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 15px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">图论</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 16.25px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 17.5px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 11.25px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 18.75px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%A0%91/" style="font-size: 13.75px;">树</a> <a href="/tags/%E6%A0%91%E4%B8%8A%E7%AE%97%E6%B3%95/" style="font-size: 10px;">树上算法</a> <a href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树形结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;">算法</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m haifenggo.more information in my wechat.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/categories">Categories</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-树的重心" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/11/10/%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83/" class="article-date">
+  	<time datetime="2022-11-10T13:51:54.000Z" itemprop="datePublished">2022-11-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      树的重心
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%A0%91/">树</a>
+	</div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>树的重心定义为，当把节点x去掉后，其最大子树的节点个数最少(或者说成最大连通块的节点数最少)，那么节点x就是树的重心。<br>通俗的理解：这个点去掉后，剩下的联通块尽量平均</p>
+<p>树上任选一结点 u 开始 DFS，沿路统计其所有子树的大小和以它为根的子树的大小，这样也就可以得到一个点所有子树的大小及的大小</p>
+<p>还有一个问题，如果这个点不是根节点，那么删掉后剩下的连通块不止有他的子树，还有他上面的部分，这部分可以由总结点减去他自己的子树大小得到</p>
+<p>我们知道一个性质：删除重心后所得的所有子树，节点数不超过原树的1/2，那么我们使用这个性质来判断一个点是否为重心即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">105</span>;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; g[MAXN];</span><br><span class="line"><span class="keyword">int</span> dp[MAXN];</span><br><span class="line"><span class="keyword">bool</span> vis[MAXN];</span><br><span class="line"><span class="keyword">int</span> ans[MAXN];</span><br><span class="line"><span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> to)</span></span>&#123;</span><br><span class="line">	dp[x]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">bool</span> flag=<span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;g[x].<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> y=g[x][i];</span><br><span class="line">		<span class="keyword">if</span>(!vis[y])&#123;</span><br><span class="line">			vis[y]=<span class="literal">true</span>;</span><br><span class="line">			<span class="built_in">dfs</span>(y,x);</span><br><span class="line">			dp[x]+=dp[y];</span><br><span class="line">			<span class="keyword">if</span>(dp[y]&gt;n/<span class="number">2</span>)&#123;</span><br><span class="line">				flag=<span class="literal">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(n-dp[x]&gt;n/<span class="number">2</span>)&#123;</span><br><span class="line">		flag=<span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(flag)&#123;</span><br><span class="line">		ans[++len]=x;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;u,&amp;v);</span><br><span class="line">		g[u].<span class="built_in">push_back</span>(v);</span><br><span class="line">		g[v].<span class="built_in">push_back</span>(u);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">1</span>,<span class="number">-1</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,len);<span class="comment">//有多少个重心</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;i++)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans[i]);<span class="comment">//输出每一个重心</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>求子树的大小，树的深度，树的父亲，树的距离之和</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const int MAXN = 1e5 + 23;</span><br><span class="line">vector&lt;int&gt; g[MAXN];</span><br><span class="line">int dep[MAXN];//树的深度</span><br><span class="line">bool vis[MAXN];</span><br><span class="line">int fa[MAXN];//树的父亲</span><br><span class="line">int siz[MAXN];//子树的大小</span><br><span class="line">int dis[MAXN];//树的距离之和</span><br><span class="line">void dfs(int cur, int deep) &#123;</span><br><span class="line">	dep[cur] = deep;</span><br><span class="line">	vis[cur] = true;</span><br><span class="line">	//printf(&quot;dep[%d] = %d;&quot;, cur, deep);</span><br><span class="line">	siz[cur] = 1;</span><br><span class="line">	for (int i = 0;i &lt; g[cur].size();i++) &#123;</span><br><span class="line">		int to = g[cur][i];</span><br><span class="line">		if (vis[to])continue;</span><br><span class="line">		fa[to] = cur;</span><br><span class="line">		//printf(&quot;fa[%d] = %d\n&quot;, to, cur);</span><br><span class="line">		dfs(to, deep + 1);</span><br><span class="line">		siz[cur] += siz[to];</span><br><span class="line">	&#125;</span><br><span class="line">	//printf(&quot;siz[%d]=%d\n&quot;, cur, siz[cur]);</span><br><span class="line">&#125;</span><br><span class="line">int mx = 0;</span><br><span class="line">int ans = 0;</span><br><span class="line">void dfs1(int cur, int n) &#123;</span><br><span class="line">	vis[cur] = true;</span><br><span class="line">	for (int i = 0;i &lt; g[cur].size();i++) &#123;</span><br><span class="line">		int to = g[cur][i];</span><br><span class="line">		if (vis[to])continue;</span><br><span class="line">		dis[to] = dis[cur] - siz[to] + (n - siz[to]);</span><br><span class="line">		//printf(&quot;dis[%d] = %d\n&quot;,to, dis[to]);</span><br><span class="line">		if (dis[to] &gt; mx) &#123;</span><br><span class="line">			mx = dis[to];</span><br><span class="line">			ans = to;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs1(to, n);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">	for (int i = 1;i &lt;= n - 1;i++) &#123;</span><br><span class="line">		int u, v;</span><br><span class="line">		scanf(&quot;%d %d&quot;, &amp;u, &amp;v);</span><br><span class="line">		g[u].push_back(v);</span><br><span class="line">		g[v].push_back(u);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(1, 0);</span><br><span class="line">	for (int i = 1;i &lt;= n;i++) &#123;</span><br><span class="line">		dis[1] += dep[i];</span><br><span class="line">		vis[i] = false;</span><br><span class="line">		//cout &lt;&lt; dep[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	//cout &lt;&lt; &quot;\n&quot;;</span><br><span class="line">	dfs1(1, n);</span><br><span class="line">	if (n == 1) &#123;</span><br><span class="line">		cout &lt;&lt; 1;return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/11/11/%E5%8C%BA%E9%97%B4dp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          区间dp
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/11/04/%E4%BA%8C%E5%8F%89%E6%A0%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">二叉树</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 haifenggo
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>数位dp | Hello Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="小蓝最近在学习二进制。他想知道 1 到 N中有多少个数满足其二进制表示中恰好有 K个 1。你能帮助他吗? 输入格式输入一行包含两个整数 N 和 K。 123456789101112131415161718192021222324252627282930313233343536373839404142int n, m, k;ll r, K;ll f[80][80];&#x2F;&#x2F; 组合数预处理void ini">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数位dp">
+<meta property="og:url" content="http://example.com/2022/11/15/%E6%95%B0%E4%BD%8Ddp/index.html">
+<meta property="og:site_name" content="Hello Blog">
+<meta property="og:description" content="小蓝最近在学习二进制。他想知道 1 到 N中有多少个数满足其二进制表示中恰好有 K个 1。你能帮助他吗? 输入格式输入一行包含两个整数 N 和 K。 123456789101112131415161718192021222324252627282930313233343536373839404142int n, m, k;ll r, K;ll f[80][80];&#x2F;&#x2F; 组合数预处理void ini">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-15T11:41:20.000Z">
+<meta property="article:modified_time" content="2022-11-15T12:38:56.727Z">
+<meta property="article:author" content="haifenggo">
+<meta property="article:tag" content="dp">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Hello Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">haifenggo</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/categories">Categories</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/dp/" style="font-size: 13.75px;">dp</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 15px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">图论</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 16.25px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 17.5px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 11.25px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 18.75px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%A0%91/" style="font-size: 13.75px;">树</a> <a href="/tags/%E6%A0%91%E4%B8%8A%E7%AE%97%E6%B3%95/" style="font-size: 10px;">树上算法</a> <a href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树形结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;">算法</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m haifenggo.more information in my wechat.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/categories">Categories</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-数位dp" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/11/15/%E6%95%B0%E4%BD%8Ddp/" class="article-date">
+  	<time datetime="2022-11-15T11:41:20.000Z" itemprop="datePublished">2022-11-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数位dp
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dp/" rel="tag">dp</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>小蓝最近在学习二进制。他想知道 1 到 N中有多少个数满足其二进制表示中恰好有 K个 <code>1</code>。你能帮助他吗?</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入一行包含两个整数 N 和 K。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, m, k;</span><br><span class="line">ll r, K;</span><br><span class="line">ll f[<span class="number">80</span>][<span class="number">80</span>];</span><br><span class="line"><span class="comment">// 组合数预处理</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">80</span>;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt;= i;j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (j == <span class="number">0</span>)f[i][j] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> f[i][j] = f[i - <span class="number">1</span>][j] + f[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">dp</span><span class="params">(ll n, <span class="keyword">int</span> K,<span class="keyword">int</span> base=<span class="number">2</span>)</span> </span>&#123;</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt;nums;</span><br><span class="line">	<span class="keyword">while</span> (n) &#123;</span><br><span class="line">		nums.<span class="built_in">push_back</span>(n % base), n /= base;</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> last = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = nums.<span class="built_in">size</span>() - <span class="number">1</span>;i &gt;= <span class="number">0</span>;i--) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = nums[i];</span><br><span class="line">		<span class="keyword">if</span> (x) &#123;</span><br><span class="line">			<span class="comment">// 使当前位为0，则后面可以随便选。</span></span><br><span class="line">			<span class="comment">// 组合数选剩余1的数量</span></span><br><span class="line">			ans += f[i][K - last];</span><br><span class="line">			<span class="comment">// 当前位选1，能使用的1的数量少一个</span></span><br><span class="line">			<span class="keyword">if</span> (x == <span class="number">1</span>) &#123;</span><br><span class="line">				last++;</span><br><span class="line">				<span class="keyword">if</span> (last &gt; K)<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 当为最后一位时,如果所消耗1的数量恰好等于规定数量时,即最后一位符合要求</span></span><br><span class="line">		<span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; last == K)ans++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin &gt;&gt; r &gt;&gt; K;</span><br><span class="line">	<span class="built_in">init</span>();</span><br><span class="line">	cout &lt;&lt; <span class="built_in">dp</span>(r, K, <span class="number">2</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, m, k;</span><br><span class="line">ll f[<span class="number">20</span>][<span class="number">2</span>][<span class="number">20</span>][<span class="number">2</span>];</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt;nums;</span><br><span class="line"><span class="comment">// len从高到低</span></span><br><span class="line"><span class="comment">// issmall表示当前位是否和nums[len]相等,0相等</span></span><br><span class="line"><span class="comment">// sum为d数字出现的总次数</span></span><br><span class="line"><span class="comment">// zero表示是否是前导0</span></span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> len, <span class="keyword">bool</span> issmall, <span class="keyword">int</span> sum, <span class="keyword">bool</span> zero, <span class="keyword">int</span> d)</span> </span>&#123;</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (len &lt; <span class="number">0</span>) &#123; <span class="keyword">return</span> sum; &#125;</span><br><span class="line">	<span class="keyword">if</span> (f[len][issmall][sum][zero] != <span class="number">-1</span>)<span class="keyword">return</span> f[len][issmall][sum][zero];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++) &#123;</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		由于我们是从高位到低位枚举的，所以如果之前一位的数码和最大数的数码相同，这一位就只能枚举到num[len]；</span></span><br><span class="line"><span class="comment">		否则如果之前一位比最大数的数码小，那这一位就可以从0~9枚举了。</span></span><br><span class="line"><span class="comment">		出现一次比最大数码小，后面的都可以枚举1~9</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		<span class="keyword">if</span> (!issmall &amp;&amp; i &gt; nums[len])<span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		继续搜索，数位减一，issmall的更新要看之前有没有相等，且这一位有没有相等；</span></span><br><span class="line"><span class="comment">		sum的更新要看之前是否为前导0或者这一位不是0；</span></span><br><span class="line"><span class="comment">		zero的更新就看之前是否为前导0且这一位继续为0；</span></span><br><span class="line"><span class="comment">		d继续传进去。</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		<span class="comment">// (!zero || i) 不是前导0，当前的0可以算上答案</span></span><br><span class="line">		ans += <span class="built_in">dfs</span>(len - <span class="number">1</span>, issmall || (i &lt; nums[len]), sum + ((!zero || i) &amp;&amp; (i == d)), zero &amp;&amp; (i == <span class="number">0</span>), d);</span><br><span class="line">	&#125;</span><br><span class="line">	f[len][issmall][sum][zero] = ans;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll x, <span class="keyword">int</span> d)</span> </span>&#123;</span><br><span class="line">	nums.<span class="built_in">clear</span>();</span><br><span class="line">	<span class="keyword">while</span> (x) &#123;</span><br><span class="line">		nums.<span class="built_in">push_back</span>(x % <span class="number">10</span>);</span><br><span class="line">		x /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(f, <span class="number">-1</span>, <span class="keyword">sizeof</span> f);</span><br><span class="line">	<span class="keyword">int</span> len = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// 最高位只能枚举到num[nums.size()-1]所以issmall是0，sum=0，有前导0。</span></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">dfs</span>(len, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, d);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ll a, b;</span><br><span class="line">	cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    <span class="comment">// 统计0~9各数字出现的次数</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++) &#123;</span><br><span class="line">		cout &lt;&lt; <span class="built_in">solve</span>(b, i) - <span class="built_in">solve</span>(a - <span class="number">1</span>, i) &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/11/15/%E8%AE%A1%E6%95%B0dp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          计数dp
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/11/15/%E6%A0%91%E5%BD%A2dp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">树形dp</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 haifenggo
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

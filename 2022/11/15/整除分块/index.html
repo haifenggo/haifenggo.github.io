@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>整除分块 | Hello Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="的值的集合大小最多为 ，这样整除分块的时间复杂度就为 。 先让  为分块的左边界，那么这块的单个值 ，这样右边界  就是值为  的最大下标 ，也就是说要找满足  的最大的 ，即 ，将  代入，得到  。 这样每块的左右边界都可以用一个确定的式子计算得到，这样分块的值就为单值 × 区间长度，即。 12345678ll division_block(ll n)&amp;#123;    ll res &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="整除分块">
+<meta property="og:url" content="http://example.com/2022/11/15/%E6%95%B4%E9%99%A4%E5%88%86%E5%9D%97/index.html">
+<meta property="og:site_name" content="Hello Blog">
+<meta property="og:description" content="的值的集合大小最多为 ，这样整除分块的时间复杂度就为 。 先让  为分块的左边界，那么这块的单个值 ，这样右边界  就是值为  的最大下标 ，也就是说要找满足  的最大的 ，即 ，将  代入，得到  。 这样每块的左右边界都可以用一个确定的式子计算得到，这样分块的值就为单值 × 区间长度，即。 12345678ll division_block(ll n)&amp;#123;    ll res &#x3D;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7Bi%7D%20%5Cright%20%5Crfloor">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?2%5Csqrt%7Bn%7D">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?O(%5Csqrt%7Bn%7D)">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?l">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?k%20=%20%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7Bl%7D%20%5Cright%20%5Crfloor">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?r">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?k">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?i">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?i%20%5Cleqslant%20%5Cfrac%7Bn%7D%7Bk%7D">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?i">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?r%20=%20max(i)%20=%20%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7Bk%7D%20%5Cright%20%5Crfloor">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?k">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?r%20=%20%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7B%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7Bl%7D%20%5Cright%20%5Crfloor%7D%20%5Cright%20%5Crfloor">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?k%20*%20(r%20-%20l%20&plus;%201)">
+<meta property="article:published_time" content="2022-11-15T13:51:52.000Z">
+<meta property="article:modified_time" content="2022-11-15T13:52:38.328Z">
+<meta property="article:author" content="haifenggo">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://latex.codecogs.com/gif.latex?%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7Bi%7D%20%5Cright%20%5Crfloor">
+  
+    <link rel="alternative" href="/atom.xml" title="Hello Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">haifenggo</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/categories">Categories</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/dp/" style="font-size: 13.75px;">dp</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 15px;">图</a> <a href="/tags/%E5%9B%BE%E7%AE%97%E6%B3%95/" style="font-size: 15px;">图算法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">图结构</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">图论</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 16.25px;">字符串</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 17.5px;">排序</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 11.25px;">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 18.75px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%A0%91/" style="font-size: 13.75px;">树</a> <a href="/tags/%E6%A0%91%E4%B8%8A%E7%AE%97%E6%B3%95/" style="font-size: 10px;">树上算法</a> <a href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树形结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;">算法</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m haifenggo.more information in my wechat.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/favicon.ico" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/categories">Categories</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-整除分块" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/11/15/%E6%95%B4%E9%99%A4%E5%88%86%E5%9D%97/" class="article-date">
+  	<time datetime="2022-11-15T13:51:52.000Z" itemprop="datePublished">2022-11-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      整除分块
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> <img src="https://latex.codecogs.com/gif.latex?%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7Bi%7D%20%5Cright%20%5Crfloor" alt="\left \lfloor \frac{n}{i} \right \rfloor"> 的值的集合大小最多为 <img src="https://latex.codecogs.com/gif.latex?2%5Csqrt%7Bn%7D" alt="2\sqrt{n}">，这样整除分块的时间复杂度就为 <img src="https://latex.codecogs.com/gif.latex?O(%5Csqrt%7Bn%7D)" alt="O(\sqrt{n})">。</p>
+<p>先让 <img src="https://latex.codecogs.com/gif.latex?l" alt="l"> 为分块的左边界，那么这块的单个值 <img src="https://latex.codecogs.com/gif.latex?k%20=%20%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7Bl%7D%20%5Cright%20%5Crfloor" alt="k = \left \lfloor \frac{n}{l} \right \rfloor">，这样右边界 <img src="https://latex.codecogs.com/gif.latex?r" alt="r"> 就是值为 <img src="https://latex.codecogs.com/gif.latex?k" alt="k"> 的最大下标 <img src="https://latex.codecogs.com/gif.latex?i" alt="i">，也就是说要找满足 <img src="https://latex.codecogs.com/gif.latex?i%20%5Cleqslant%20%5Cfrac%7Bn%7D%7Bk%7D" alt="i \leqslant \frac{n}{k}"> 的最大的 <img src="https://latex.codecogs.com/gif.latex?i" alt="i">，即 <img src="https://latex.codecogs.com/gif.latex?r%20=%20max(i)%20=%20%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7Bk%7D%20%5Cright%20%5Crfloor" alt="r = max(i) = \left \lfloor \frac{n}{k} \right \rfloor">，将 <img src="https://latex.codecogs.com/gif.latex?k" alt="k"> 代入，得到 <img src="https://latex.codecogs.com/gif.latex?r%20=%20%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7B%5Cleft%20%5Clfloor%20%5Cfrac%7Bn%7D%7Bl%7D%20%5Cright%20%5Crfloor%7D%20%5Cright%20%5Crfloor" alt="r = \left \lfloor \frac{n}{\left \lfloor \frac{n}{l} \right \rfloor} \right \rfloor"> 。</p>
+<p>这样每块的左右边界都可以用一个确定的式子计算得到，这样分块的值就为单值 × 区间长度，即<img src="https://latex.codecogs.com/gif.latex?k%20*%20(r%20-%20l%20&plus;%201)" alt="k * (r - l + 1)">。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">division_block</span><span class="params">(ll n)</span></span>&#123;</span><br><span class="line">    ll res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(ll l = <span class="number">1</span>, r; l &lt;= n; l = r + <span class="number">1</span>)&#123;</span><br><span class="line">        r = n / (n / l);</span><br><span class="line">        res += n / l * (r - l + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/11/15/%E5%AF%B9%E9%A1%B6%E5%A0%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">对顶堆</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 haifenggo
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
